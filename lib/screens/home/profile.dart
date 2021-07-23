@@ -54,7 +54,13 @@ class ProfileScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pushReplacementNamed(context, '/login');
             },
-            child: Text("Log out"),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Log out",
+                style: TextStyle(fontSize: 18.0),
+              ),
+            ),
           )
         ],
       )),

@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import '../components/formelements.dart';
 
-class LoginScreen extends StatelessWidget {
+enum Choice { Customer, Garage }
+
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  Choice? _choice = Choice.Customer;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +39,26 @@ class LoginScreen extends StatelessWidget {
                 border: OutlineInputBorder(),
               ),
             ),
+          ),
+          RadioListTile<Choice>(
+            title: const Text('Login as Customer'),
+            value: Choice.Customer,
+            groupValue: _choice,
+            onChanged: (Choice? value) {
+              setState(() {
+                _choice = value;
+              });
+            },
+          ),
+          RadioListTile<Choice>(
+            title: const Text('Login as Garage Dealer'),
+            value: Choice.Garage,
+            groupValue: _choice,
+            onChanged: (Choice? value) {
+              setState(() {
+                _choice = value;
+              });
+            },
           ),
           ElevatedButton(
             onPressed: () {

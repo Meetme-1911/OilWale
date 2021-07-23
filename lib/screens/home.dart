@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import './home/vehicles.dart';
 import './home/profile.dart';
+import './home/garage.dart';
 
 Widget getItem(idx) {
   switch (idx) {
     case 0:
       return VehiclesScreen();
     case 1:
-      return Text("Garages");
+      return GarageScreen();
     case 2:
       return ProfileScreen();
+    default:
+      return Container();
   }
-  return Text("404");
 }
 
 class HomeScreen extends StatefulWidget {

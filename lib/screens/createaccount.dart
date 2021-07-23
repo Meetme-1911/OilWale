@@ -52,6 +52,14 @@ class CreateAccountScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: TextInput(
+                  hint: '000000',
+                  label: 'PINCODE',
+                  icon: Icon(Icons.fiber_pin_outlined),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: TextInput(
                   hint: 'REFERALCODE',
                   label: 'Referal code (optional)',
                   icon: Icon(Icons.code),

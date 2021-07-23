@@ -16,7 +16,7 @@ class TextInput extends StatelessWidget {
         decoration: InputDecoration(
           icon: this.icon,
           hintText: this.hint,
-          labelText: this.hint,
+          labelText: this.label,
           border: OutlineInputBorder(),
         ),
       ),

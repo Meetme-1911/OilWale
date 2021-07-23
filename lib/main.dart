@@ -4,6 +4,10 @@ import 'components/addvehicleform.dart';
 
 void main() {
   runApp(MaterialApp(
+    theme: ThemeData(
+        backgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white, color: Colors.deepOrange)),
     initialRoute: '/login',
     routes: {
       // '/': (context) => SplashScreen(),
