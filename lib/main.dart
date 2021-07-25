@@ -5,9 +5,19 @@ import 'components/addvehicleform.dart';
 void main() {
   runApp(MaterialApp(
     theme: ThemeData(
+        floatingActionButtonTheme:
+            FloatingActionButtonThemeData(backgroundColor: Colors.deepOrange),
+        radioTheme: RadioThemeData(
+            fillColor: MaterialStateProperty.all(Colors.deepOrange)),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.deepOrange))),
         backgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
-            backgroundColor: Colors.white, color: Colors.deepOrange)),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            backgroundColor: Colors.white,
+            unselectedItemColor: Colors.deepOrange[200],
+            selectedItemColor: Colors.deepOrange),
+        appBarTheme: AppBarTheme(backgroundColor: Colors.white)),
     initialRoute: '/login',
     routes: {
       // '/': (context) => SplashScreen(),

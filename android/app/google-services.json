@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "292797549725",
+    "project_id": "demo1-4c8a4",
+    "storage_bucket": "demo1-4c8a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292797549725:android:5dedbb839adcdd55d31874",
+        "android_client_info": {
+          "package_name": "com.mplubs.oilwale"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292797549725-5lbf9ct2tk33722kdqs9st75022ob7po.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA29sJtkLAvOzmMcsXsbht-u-t17MUh0mo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292797549725-5lbf9ct2tk33722kdqs9st75022ob7po.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

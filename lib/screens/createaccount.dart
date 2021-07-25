@@ -9,6 +9,7 @@ class CreateAccountScreen extends StatelessWidget {
         floatingActionButton: Padding(
           padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
           child: FloatingActionButton(
+            backgroundColor: Colors.deepOrange,
             onPressed: () {
               Navigator.pop(context);
             },
@@ -21,6 +22,9 @@ class CreateAccountScreen extends StatelessWidget {
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(
+                height: 100,
+              ),
               Padding(
                 padding: EdgeInsets.only(bottom: 8.0),
                 child: TextInput(

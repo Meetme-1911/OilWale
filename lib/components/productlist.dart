@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class Garage {
+class Product {
   int? id;
   String? name;
-  int? pincode;
-  String? address;
-  Garage({this.id, this.name, this.pincode, this.address});
+  double? price;
+  String? description;
+  Product({this.id, this.name, this.price, this.description});
 }
 
-class GarageTile extends StatelessWidget {
-  final Garage garage;
+class ProductTile extends StatelessWidget {
+  final Product product;
 
-  const GarageTile({Key? key, required this.garage}) : super(key: key);
+  const ProductTile({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +25,15 @@ class GarageTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "${garage.name}",
+              "${product.name}",
               style: TextStyle(color: Colors.white, fontSize: 20.0),
             ),
             Text(
-              "${garage.pincode}",
+              "${product.price}",
               style: TextStyle(color: Colors.white, fontSize: 12.0),
             ),
             Text(
-              "${garage.address}",
+              "${product.description}",
               style: TextStyle(color: Colors.white, fontSize: 12.0),
             )
           ],
@@ -41,29 +41,29 @@ class GarageTile extends StatelessWidget {
   }
 }
 
-List<Garage> allGarages = [
-  new Garage(
-      id: 1, name: "Garage1", pincode: 123456, address: "example addresss"),
-  new Garage(
-      id: 2, name: "Garage2", pincode: 123456, address: "example addresss"),
-  new Garage(
-      id: 3, name: "Garage3", pincode: 123456, address: "example addresss"),
+List<Product> allProducts = [
+  new Product(
+      id: 1, name: "Product1", price: 1500, description: "example product"),
+  new Product(
+      id: 2, name: "Product2", price: 100, description: "example product"),
+  new Product(
+      id: 3, name: "Product3", price: 250, description: "example product"),
 ];
 
-class GarageListView extends StatefulWidget {
-  GarageListView({Key? key}) : super(key: key);
+class ProductListView extends StatefulWidget {
+  ProductListView({Key? key}) : super(key: key);
 
   @override
-  _GarageListViewState createState() => _GarageListViewState();
+  _ProductListViewState createState() => _ProductListViewState();
 }
 
-class _GarageListViewState extends State<GarageListView> {
-  List<Garage> _gList = [];
+class _ProductListViewState extends State<ProductListView> {
+  List<Product> _pList = [];
 
   @override
   void initState() {
     super.initState();
-    _gList = allGarages;
+    _pList = allProducts;
   }
 
   @override
@@ -75,15 +75,12 @@ class _GarageListViewState extends State<GarageListView> {
             print("User entered: " + input);
             setState(() {
               String inpLowercase = input.toLowerCase();
-              _gList = allGarages.where((g) {
-                if (g.name!.toLowerCase().contains(inpLowercase)) {
+              _pList = allProducts.where((p) {
+                if (p.name!.toLowerCase().contains(inpLowercase)) {
                   return true;
-                } else if (g.pincode!
-                    .toString()
+                } else if (p.description!
                     .toLowerCase()
                     .contains(inpLowercase)) {
-                  return true;
-                } else if (g.address!.toLowerCase().contains(inpLowercase)) {
                   return true;
                 } else {
                   return false;
@@ -99,9 +96,9 @@ class _GarageListViewState extends State<GarageListView> {
         Expanded(
           // height: (MediaQuery.of(context).size.height - 179),
           child: ListView.builder(
-            itemCount: _gList.length,
+            itemCount: _pList.length,
             itemBuilder: (context, index) {
-              return GarageTile(garage: _gList[index]);
+              return ProductTile(product: _pList[index]);
             },
           ),
         ),
