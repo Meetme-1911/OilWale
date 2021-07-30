@@ -11,9 +11,9 @@ Widget getItem(idx) {
     case 1:
       return GarageScreen();
     case 2:
-      return ProfileScreen();
-    case 3:
       return ProductScreen();
+    case 3:
+      return ProfileScreen();
     default:
       return Container();
   }
