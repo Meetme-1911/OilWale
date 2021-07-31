@@ -5,6 +5,7 @@ import 'components/addvehicleform.dart';
 void main() {
   runApp(MaterialApp(
     theme: ThemeData(
+        iconTheme: IconThemeData(color: Colors.deepOrange),
         floatingActionButtonTheme:
             FloatingActionButtonThemeData(backgroundColor: Colors.deepOrange),
         radioTheme: RadioThemeData(

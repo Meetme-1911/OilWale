@@ -17,7 +17,7 @@ class CreateAccountScreen extends StatelessWidget {
           ),
         ),
         body: Container(
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(48.0),
           child: Center(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -28,9 +28,12 @@ class CreateAccountScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(bottom: 8.0),
                 child: TextInput(
-                  hint: 'your name',
+                  hint: 'Your name',
                   label: 'Enter name',
-                  icon: Icon(Icons.person),
+                  icon: Icon(
+                    Icons.person,
+                    color: Colors.deepOrange,
+                  ),
                 ),
               ),
               Padding(
@@ -38,35 +41,43 @@ class CreateAccountScreen extends StatelessWidget {
                 child: TextInput(
                   hint: '000-000-0000',
                   label: 'Enter phone',
-                  icon: Icon(Icons.phone),
+                  icon: Icon(
+                    Icons.phone,
+                    color: Colors.deepOrange,
+                  ),
                 ),
               ),
               Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: TextArea(
+                    icon: Icon(
+                      Icons.location_pin,
+                      color: Colors.deepOrange,
+                    ),
+                    lines: 4,
+                    label: 'Enter address',
+                    hint: 'xyz society, abc area ...',
+                  )),
+              Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: TextFormField(
-                  maxLines: 4,
-                  decoration: InputDecoration(
-                    icon: Icon(Icons.location_pin),
-                    labelText: 'Enter address',
-                    hintText: "xyz society, abc area ...",
-                    border: OutlineInputBorder(),
+                child: TextInput(
+                  hint: '000000',
+                  label: 'PINCODE',
+                  icon: Icon(
+                    Icons.fiber_pin_outlined,
+                    color: Colors.deepOrange,
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: TextInput(
-                  hint: '000000',
-                  label: 'PINCODE',
-                  icon: Icon(Icons.fiber_pin_outlined),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: TextInput(
-                  hint: 'REFERALCODE',
-                  label: 'Referal code (optional)',
-                  icon: Icon(Icons.code),
+                  hint: 'REFERRALCODE',
+                  label: 'Referral code (optional)',
+                  icon: Icon(
+                    Icons.code,
+                    color: Colors.deepOrange,
+                  ),
                 ),
               ),
               Padding(

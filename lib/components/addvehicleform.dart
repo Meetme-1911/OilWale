@@ -7,13 +7,16 @@ class AddVehicleForm extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.white),
+            icon: Icon(Icons.arrow_back, color: Colors.deepOrange),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          title: Text("Add vehicle"),
+          title: Text(
+            "Add vehicle",
+            style: TextStyle(color: Colors.deepOrange),
+          ),
         ),
         body: Container(
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(48.0),
           child: Center(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

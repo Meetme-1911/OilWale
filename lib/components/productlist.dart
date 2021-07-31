@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './oilwale_theme.dart';
 
 class Product {
   int? id;
@@ -19,22 +20,22 @@ class ProductTile extends StatelessWidget {
         margin: EdgeInsets.symmetric(vertical: 4.0),
         padding: EdgeInsets.all(8.0),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8), color: Colors.deepOrange),
+            border: Border(bottom: BorderSide(color: Colors.deepOrange))),
         // color: Colors.deepOrange,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "${product.name}",
-              style: TextStyle(color: Colors.white, fontSize: 20.0),
+              style: deepOrangeTS(fontSize: 20),
             ),
             Text(
               "${product.price}",
-              style: TextStyle(color: Colors.white, fontSize: 12.0),
+              style: deepOrangeTS(fontSize: 12),
             ),
             Text(
               "${product.description}",
-              style: TextStyle(color: Colors.white, fontSize: 12.0),
+              style: deepOrangeTS(fontSize: 12),
             )
           ],
         ));
@@ -90,8 +91,20 @@ class _ProductListViewState extends State<ProductListView> {
           },
           decoration: InputDecoration(
               hintText: 'Search',
-              suffixIcon: Icon(Icons.search),
-              border: OutlineInputBorder()),
+              suffixIcon: Icon(
+                Icons.search,
+                color: Colors.deepOrange,
+              ),
+              labelStyle: TextStyle(color: Colors.deepOrange),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(25.0),
+                borderSide: BorderSide(
+                  color: Colors.deepOrange,
+                ),
+              ),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.deepOrange)),
+              hintStyle: TextStyle(color: Colors.deepOrange)),
         ),
         Expanded(
           // height: (MediaQuery.of(context).size.height - 179),
