@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../components/formelements.dart';
+// import '../components/formelements.dart';
 
 enum Choice { Customer, Garage }
 
@@ -94,7 +94,11 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/home');
+                  if (_choice == Choice.Customer) {
+                    Navigator.pushReplacementNamed(context, '/home');
+                  } else if (_choice == Choice.Garage) {
+                    Navigator.pushReplacementNamed(context, '/garage_home');
+                  }
                 },
                 style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all(
