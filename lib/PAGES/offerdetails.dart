@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '/PAGES/offers.dart';
-import '../utils/routes.dart';
+// import '/PAGES/offers.dart';
 
 class OfferDetails extends StatelessWidget {
   const OfferDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var obj = new OffersPage();
+    // var obj = new OffersPage();
 
     return Material(
       color: Colors.grey[200],

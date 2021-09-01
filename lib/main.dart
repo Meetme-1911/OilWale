@@ -1,134 +1,36 @@
 import 'package:flutter/material.dart';
-import 'PAGES/cart.dart';
-import 'PAGES/offers.dart';
-import 'PAGES/products.dart';
-import 'utils/routes.dart';
-import 'PAGES/offerdetails.dart';
+import 'screens/index.dart';
+import 'components/addvehicleform.dart';
+
 import 'PAGES/home_page.dart';
-import 'PAGES/profile.dart';
+import 'PAGES/offer_page.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      // home: HomePage(),
-      home: MyBottomNavigationBar(),
-
-      initialRoute: "/",
-      routes: {
-        MyRoutes.HomePageRoute: (context) => HomePage(),
-        MyRoutes.OfferPageRoute: (context) => MyBottomNavigationBar(),
-      },
-    );
-  }
-}
-
-class MyBottomNavigationBar extends StatefulWidget {
-  const MyBottomNavigationBar({Key? key}) : super(key: key);
-
-  @override
-  _MyBottomNavigationBarState createState() => _MyBottomNavigationBarState();
-}
-
-class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
-  int _currentindex = 0;
-  final List<Widget> _children = [
-    HomePage(),
-    OffersPage(),
-    ProductsPage(),
-    Profile()
-  ];
-  final bool showcart = false;
-  final floatingbtn = [
-    null,
-    null,
-    FloatingActionButton(
-      elevation: 2.0,
-      onPressed: () {},
-      child: Icon(Icons.shopping_cart),
-      backgroundColor: Colors.white,
-      foregroundColor: Colors.deepOrange,
-    ),
-    null
-  ];
-  void onTapped(int index) {
-    setState(() {
-      _currentindex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: new AppBar(
-        actions: [
-          PopupMenuButton(
-              offset: const Offset(0.0, 50.0),
-              icon: Icon(
-                Icons.more_vert,
-                color: Colors.deepOrange,
-              ),
-              color: Colors.grey[300],
-              itemBuilder: (context) => [
-                    PopupMenuItem(
-                        child: Row(
-                      children: [
-                        Icon(
-                          Icons.settings,
-                          color: Colors.deepOrange,
-                        ),
-                        const SizedBox(
-                          width: 7,
-                        ),
-                        Text("Settings"),
-                      ],
-                    )),
-                    PopupMenuItem(
-                        child: Row(
-                      children: [
-                        Icon(
-                          Icons.logout,
-                          color: Colors.deepOrange,
-                        ),
-                        const SizedBox(
-                          width: 7,
-                        ),
-                        Text("Logout")
-                      ],
-                    ))
-                  ])
-        ],
-        title: Text(
-          "Oil Wale",
-          style: TextStyle(color: Colors.deepOrange),
-        ),
-        centerTitle: true,
-        elevation: 0.0,
+  runApp(MaterialApp(
+    theme: ThemeData(
+        iconTheme: IconThemeData(color: Colors.deepOrange),
+        floatingActionButtonTheme:
+            FloatingActionButtonThemeData(backgroundColor: Colors.deepOrange),
+        radioTheme: RadioThemeData(
+            fillColor: MaterialStateProperty.all(Colors.deepOrange)),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.deepOrange))),
         backgroundColor: Colors.white,
-      ),
-      body: _children[_currentindex],
-      floatingActionButton: floatingbtn[_currentindex],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.deepOrange,
-        unselectedItemColor: Colors.grey,
-        type: BottomNavigationBarType.fixed,
-        onTap: onTapped,
-        currentIndex: _currentindex,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.local_offer), label: "Offers"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag_outlined), label: "Products"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
-      ),
-    );
-  }
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            backgroundColor: Colors.white,
+            unselectedItemColor: Colors.deepOrange[200],
+            selectedItemColor: Colors.deepOrange),
+        appBarTheme: AppBarTheme(backgroundColor: Colors.white)),
+    initialRoute: '/login',
+    routes: {
+      // '/': (context) => SplashScreen(),
+      '/login': (context) => LoginScreen(),
+      '/cust_home': (context) => HomeScreen(),
+      '/cust_createAccount': (context) => CreateAccountScreen(),
+      '/cust_addvehicle': (context) => AddVehicleForm(),
+      '/garage_home': (context) => HomePage(),
+      '/garage_OfferPage': (context) => OfferPage(),
+    },
+  ));
 }
