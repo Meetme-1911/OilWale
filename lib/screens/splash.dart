@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image(image: AssetImage('assets/mplubricantslogo.png')),
+          Image(image: AssetImage('assets/img/mplubricantslogo.png')),
           SpinKitThreeBounce(
             color: Colors.white,
           )
