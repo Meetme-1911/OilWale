@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ElevatedButton(
                 onPressed: () {
                   if (_choice == Choice.Customer) {
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushReplacementNamed(context, '/cust_home');
                   } else if (_choice == Choice.Garage) {
                     Navigator.pushReplacementNamed(context, '/garage_home');
                   }

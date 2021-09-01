@@ -30,7 +30,7 @@ void main() {
       '/cust_createAccount': (context) => CreateAccountScreen(),
       '/cust_addvehicle': (context) => AddVehicleForm(),
       '/garage_home': (context) => HomePage(),
-      '/garage_OfferPage': (context) => OfferPage(),
+      '/garage_offerpage': (context) => OfferPage(),
     },
   ));
 }

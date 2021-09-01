@@ -17,7 +17,7 @@ class VehiclesScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/addvehicle');
+                Navigator.pushNamed(context, '/cust_addvehicle');
               },
               child: Padding(
                   padding: const EdgeInsets.all(8.0),

@@ -38,7 +38,7 @@ class OfferDetails extends StatelessWidget {
                   children: [
                     TextButton(
                         onPressed: () {
-                          /*Navigator.pushNamed(context, MyRoutes.OfferPageRoute);*/
+                          /*Navigator.pushNamed(context, 'garage_offerpage');*/
                         },
                         style: TextButton.styleFrom(
                           backgroundColor: Colors.red[100]!.withOpacity(0.5),

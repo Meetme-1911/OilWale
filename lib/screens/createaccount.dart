@@ -86,7 +86,7 @@ class CreateAccountScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/addvehicle');
+                  Navigator.pushNamed(context, '/cust_addvehicle');
                 },
                 style: ButtonStyle(
                     // textStyle: MaterialStateProperty.all<TextStyle>(
