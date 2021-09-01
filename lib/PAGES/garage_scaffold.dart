@@ -4,14 +4,14 @@ import '../PAGES/products.dart';
 import '../PAGES/home_page.dart';
 import '../PAGES/profile.dart';
 
-class OfferPage extends StatefulWidget {
-  const OfferPage({Key? key}) : super(key: key);
+class GarageScaffold extends StatefulWidget {
+  const GarageScaffold({Key? key}) : super(key: key);
 
   @override
-  _OfferPageState createState() => _OfferPageState();
+  _GarageScaffoldState createState() => _GarageScaffoldState();
 }
 
-class _OfferPageState extends State<OfferPage> {
+class _GarageScaffoldState extends State<GarageScaffold> {
   int _currentindex = 0;
   final List<Widget> _children = [
     HomePage(),

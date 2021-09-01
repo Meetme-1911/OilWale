@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'screens/index.dart';
 import 'components/addvehicleform.dart';
 
-import 'PAGES/home_page.dart';
-import 'PAGES/offer_page.dart';
+// import 'PAGES/home_page.dart';
+import 'PAGES/garage_scaffold.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -23,14 +23,14 @@ void main() {
             selectedItemColor: Colors.deepOrange),
         appBarTheme: AppBarTheme(backgroundColor: Colors.white)),
     initialRoute: '/login',
+    home: GarageScaffold(),
     routes: {
       // '/': (context) => SplashScreen(),
       '/login': (context) => LoginScreen(),
       '/cust_home': (context) => HomeScreen(),
       '/cust_createAccount': (context) => CreateAccountScreen(),
       '/cust_addvehicle': (context) => AddVehicleForm(),
-      '/garage_home': (context) => HomePage(),
-      '/garage_offerpage': (context) => OfferPage(),
+      '/garage_home': (context) => GarageScaffold(),
     },
   ));
 }

@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/createAccount');
+                  Navigator.pushNamed(context, '/cust_createAccount');
                 },
                 style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all(
