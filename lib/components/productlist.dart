@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 import './oilwale_theme.dart';
-
-class Product {
-  int? id;
-  String? name;
-  double? price;
-  String? description;
-  Product({this.id, this.name, this.price, this.description});
-}
+import '../models/product.dart';
 
 class ProductTile extends StatelessWidget {
   final Product product;
@@ -34,7 +27,7 @@ class ProductTile extends StatelessWidget {
               style: deepOrangeTS(fontSize: 12),
             ),
             Text(
-              "${product.description}",
+              "${product.specification}",
               style: deepOrangeTS(fontSize: 12),
             )
           ],
@@ -44,11 +37,11 @@ class ProductTile extends StatelessWidget {
 
 List<Product> allProducts = [
   new Product(
-      id: 1, name: "Product1", price: 1500, description: "example product"),
+      id: '1', name: "Product1", price: 1500, specification: "example product"),
   new Product(
-      id: 2, name: "Product2", price: 100, description: "example product"),
+      id: '2', name: "Product2", price: 100, specification: "example product"),
   new Product(
-      id: 3, name: "Product3", price: 250, description: "example product"),
+      id: '3', name: "Product3", price: 250, specification: "example product"),
 ];
 
 class ProductListView extends StatefulWidget {
@@ -77,9 +70,9 @@ class _ProductListViewState extends State<ProductListView> {
             setState(() {
               String inpLowercase = input.toLowerCase();
               _pList = allProducts.where((p) {
-                if (p.name!.toLowerCase().contains(inpLowercase)) {
+                if (p.name.toLowerCase().contains(inpLowercase)) {
                   return true;
-                } else if (p.description!
+                } else if (p.specification
                     .toLowerCase()
                     .contains(inpLowercase)) {
                   return true;

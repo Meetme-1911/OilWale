@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/productcatalog.dart';
+import '../models/product.dart';
 
 class ItemWidget extends StatelessWidget {
   final Product item;
@@ -21,7 +21,8 @@ class ItemWidget extends StatelessWidget {
                 height: 100,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: NetworkImage(item.image), fit: BoxFit.cover)),
+                        image: NetworkImage("https://picsum.photos/200"),
+                        fit: BoxFit.cover)),
               ),
               SizedBox(
                 width: 4.0,
@@ -46,7 +47,7 @@ class ItemWidget extends StatelessWidget {
                     Container(
                       width: 175.0,
                       child: Text(
-                        item.desc,
+                        item.specification,
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontSize: 12.0,
