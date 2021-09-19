@@ -32,7 +32,9 @@ class CustomerAPIManager {
       var client = http.Client();
       String urlStr = base_url + "/addCustomer";
       var url = Uri.parse(urlStr);
-      var response = await client.post(url, body: {'cbean': dataString});
+      print(dataString);
+      var response = await client.post(url,
+          body: dataString, headers: {'Content-Type': 'application/json'});
       if (response.statusCode == 200) {
         var jsonString = response.body;
         Map<String, dynamic> jsonMap = jsonDecode(jsonString);

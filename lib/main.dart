@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/index.dart';
 import 'components/addvehicleform.dart';
-
-// import 'PAGES/home_page.dart';
 import 'PAGES/garage_scaffold.dart';
 
 void main() {

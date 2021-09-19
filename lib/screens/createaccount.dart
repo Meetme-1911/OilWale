@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:Oilwale/service/customer_api.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   @override
@@ -49,12 +50,15 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               Padding(
                 padding: EdgeInsets.only(bottom: 8.0),
                 child: TextFormField(
-                  onSaved: (String? inp) {
+                  onChanged: (String? inp) {
                     _name = inp;
                   },
                   style: TextStyle(fontSize: _textInputfontSize),
                   decoration: InputDecoration(
-                    icon: Icon(Icons.person),
+                    icon: Icon(
+                      Icons.person,
+                      color: _customColor,
+                    ),
                     hintText: 'Your name',
                     labelText: 'Enter name',
                     labelStyle: _customTStyle,
@@ -69,12 +73,16 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: TextFormField(
-                  onSaved: (String? inp) {
+                  onChanged: (String? inp) {
                     this._phone = inp;
                   },
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
                   style: TextStyle(fontSize: _textInputfontSize),
                   decoration: InputDecoration(
-                    icon: Icon(Icons.person),
+                    icon: Icon(Icons.person, color: _customColor),
                     hintText: 'Your phone',
                     labelText: 'Enter phone',
                     labelStyle: _customTStyle,
@@ -89,8 +97,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: TextFormField(
-                    onSaved: (String? inp) {
-                      this._phone = inp;
+                    onChanged: (String? inp) {
+                      this._addr = inp;
                     },
                     maxLines: 4,
                     style: TextStyle(fontSize: _textInputfontSize),
@@ -112,7 +120,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: TextFormField(
-                  onSaved: (String? inp) {
+                  onChanged: (String? inp) {
                     this._pin = inp;
                   },
                   style: TextStyle(fontSize: _textInputfontSize),
@@ -139,12 +147,12 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: TextFormField(
-                  onSaved: (String? inp) {
+                  onChanged: (String? inp) {
                     this._refcode = inp;
                   },
                   style: TextStyle(fontSize: _textInputfontSize),
                   decoration: InputDecoration(
-                    icon: Icon(Icons.code),
+                    icon: Icon(Icons.code, color: _customColor),
                     hintText: 'REFERRALCODE',
                     labelText: 'Referral code (optional)',
                     labelStyle: _customTStyle,
@@ -168,8 +176,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   data['customerPincode'] = _pin;
                   data['garageReferralCode'] = _refcode;
                   data['customerAddress'] = _addr;
-
-                  print(data);
+                  CustomerAPIManager.addCustomer(data);
                   // Navigator.pushNamed(context, '/cust_addvehicle');
                 },
                 style: ButtonStyle(
