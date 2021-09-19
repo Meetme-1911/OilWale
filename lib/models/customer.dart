@@ -6,7 +6,7 @@ class Customer {
   late String customerAddress;
   late String customerPincode;
   String? garageReferralCode;
-  late DateTime createdAt;
+  late String createdAt;
   DateTime? updatedAt;
 
   Customer(
@@ -21,14 +21,14 @@ class Customer {
       required this.updatedAt});
 
   Customer.fromJSON(Map<String, dynamic> json) {
-    this.isActive = json['productId'];
-    this.customerId = json['productId'];
+    this.isActive = json['isActive'];
+    this.customerId = json['customerId'];
     this.customerName = json['productId'];
-    this.customerPhoneNumber = json['productId'];
-    this.customerAddress = json['productId'];
-    this.customerPincode = json['productId'];
-    this.garageReferralCode = json['productId'];
-    this.createdAt = json['productId'];
-    this.updatedAt = json['productId'];
+    this.customerPhoneNumber = json['customerPhoneNumber'];
+    this.customerAddress = json['customerAddress'];
+    this.customerPincode = json['customerPincode'];
+    this.garageReferralCode = json['garageReferralCode'];
+    this.createdAt = json['createdAt'];
+    this.updatedAt = json['updatedAt'];
   }
 }

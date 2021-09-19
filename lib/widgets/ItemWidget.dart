@@ -47,7 +47,7 @@ class ItemWidget extends StatelessWidget {
                     Container(
                       width: 175.0,
                       child: Text(
-                        item.specification,
+                        item.specification ?? 'NULL',
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontSize: 12.0,
@@ -66,7 +66,7 @@ class ItemWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '\u{20B9}${item.price}',
+                          '\u{20B9}${1000}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 15.0,

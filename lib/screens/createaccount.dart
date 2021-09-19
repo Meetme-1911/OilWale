@@ -1,7 +1,28 @@
 import 'package:flutter/material.dart';
-import '../components/formelements.dart';
+import 'package:flutter/services.dart';
 
-class CreateAccountScreen extends StatelessWidget {
+class CreateAccountScreen extends StatefulWidget {
+  @override
+  _CreateAccountScreenState createState() => _CreateAccountScreenState();
+}
+
+class _CreateAccountScreenState extends State<CreateAccountScreen> {
+  String? _name;
+  String? _phone;
+  String? _addr;
+  String? _pin;
+  String? _refcode;
+  // constants
+  final Color _customColor = Colors.deepOrange;
+  final double _textInputfontSize = 16.0;
+  final TextStyle _customTStyle = TextStyle(color: Colors.deepOrange);
+  final OutlineInputBorder _customOutlineBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(25.0),
+    borderSide: BorderSide(
+      color: Colors.deepOrange,
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,66 +48,129 @@ class CreateAccountScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 8.0),
-                child: TextInput(
-                  hint: 'Your name',
-                  label: 'Enter name',
-                  icon: Icon(
-                    Icons.person,
-                    color: Colors.deepOrange,
+                child: TextFormField(
+                  onSaved: (String? inp) {
+                    _name = inp;
+                  },
+                  style: TextStyle(fontSize: _textInputfontSize),
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.person),
+                    hintText: 'Your name',
+                    labelText: 'Enter name',
+                    labelStyle: _customTStyle,
+                    focusedBorder: _customOutlineBorder,
+                    border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: _customColor)),
+                    hintStyle: _customTStyle,
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: TextInput(
-                  hint: '000-000-0000',
-                  label: 'Enter phone',
-                  icon: Icon(
-                    Icons.phone,
-                    color: Colors.deepOrange,
+                child: TextFormField(
+                  onSaved: (String? inp) {
+                    this._phone = inp;
+                  },
+                  style: TextStyle(fontSize: _textInputfontSize),
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.person),
+                    hintText: 'Your phone',
+                    labelText: 'Enter phone',
+                    labelStyle: _customTStyle,
+                    focusedBorder: _customOutlineBorder,
+                    border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: _customColor)),
+                    hintStyle: _customTStyle,
                   ),
                 ),
               ),
               Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
-                  child: TextArea(
-                    icon: Icon(
-                      Icons.location_pin,
-                      color: Colors.deepOrange,
+                  child: TextFormField(
+                    onSaved: (String? inp) {
+                      this._phone = inp;
+                    },
+                    maxLines: 4,
+                    style: TextStyle(fontSize: _textInputfontSize),
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.location_pin,
+                        color: _customColor,
+                      ),
+                      hintText: 'xyz society, abc area ...',
+                      labelText: 'Enter address',
+                      labelStyle: _customTStyle,
+                      focusedBorder: _customOutlineBorder,
+                      border: OutlineInputBorder(),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: _customColor)),
+                      hintStyle: _customTStyle,
                     ),
-                    lines: 4,
-                    label: 'Enter address',
-                    hint: 'xyz society, abc area ...',
                   )),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: TextInput(
-                  hint: '000000',
-                  label: 'PINCODE',
-                  icon: Icon(
-                    Icons.fiber_pin_outlined,
-                    color: Colors.deepOrange,
+                child: TextFormField(
+                  onSaved: (String? inp) {
+                    this._pin = inp;
+                  },
+                  style: TextStyle(fontSize: _textInputfontSize),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
+                  decoration: InputDecoration(
+                    icon: Icon(
+                      Icons.fiber_pin_outlined,
+                      color: _customColor,
+                    ),
+                    hintText: '000000',
+                    labelText: 'PINCODE',
+                    labelStyle: _customTStyle,
+                    focusedBorder: _customOutlineBorder,
+                    border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: _customColor)),
+                    hintStyle: _customTStyle,
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: TextInput(
-                  hint: 'REFERRALCODE',
-                  label: 'Referral code (optional)',
-                  icon: Icon(
-                    Icons.code,
-                    color: Colors.deepOrange,
+                child: TextFormField(
+                  onSaved: (String? inp) {
+                    this._refcode = inp;
+                  },
+                  style: TextStyle(fontSize: _textInputfontSize),
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.code),
+                    hintText: 'REFERRALCODE',
+                    labelText: 'Referral code (optional)',
+                    labelStyle: _customTStyle,
+                    focusedBorder: _customOutlineBorder,
+                    border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: _customColor)),
+                    hintStyle: _customTStyle,
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
-                child: PasswordInput(),
+                child: Container(),
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/cust_addvehicle');
+                  Map<String, dynamic> data = new Map();
+                  data['customerName'] = _name;
+                  data['customerPhoneNumber'] = _phone;
+                  data['customerPincode'] = _pin;
+                  data['garageReferralCode'] = _refcode;
+                  data['customerAddress'] = _addr;
+
+                  print(data);
+                  // Navigator.pushNamed(context, '/cust_addvehicle');
                 },
                 style: ButtonStyle(
                     // textStyle: MaterialStateProperty.all<TextStyle>(

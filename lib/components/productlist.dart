@@ -23,7 +23,7 @@ class ProductTile extends StatelessWidget {
               style: deepOrangeTS(fontSize: 20),
             ),
             Text(
-              "${product.price}",
+              "${100}",
               style: deepOrangeTS(fontSize: 12),
             ),
             Text(
@@ -36,12 +36,9 @@ class ProductTile extends StatelessWidget {
 }
 
 List<Product> allProducts = [
-  new Product(
-      id: '1', name: "Product1", price: 1500, specification: "example product"),
-  new Product(
-      id: '2', name: "Product2", price: 100, specification: "example product"),
-  new Product(
-      id: '3', name: "Product3", price: 250, specification: "example product"),
+  new Product(id: '1', name: "Product1", specification: "example product"),
+  new Product(id: '2', name: "Product2", specification: "example product"),
+  new Product(id: '3', name: "Product3", specification: "example product"),
 ];
 
 class ProductListView extends StatefulWidget {
@@ -72,7 +69,7 @@ class _ProductListViewState extends State<ProductListView> {
               _pList = allProducts.where((p) {
                 if (p.name.toLowerCase().contains(inpLowercase)) {
                   return true;
-                } else if (p.specification
+                } else if (p.specification!
                     .toLowerCase()
                     .contains(inpLowercase)) {
                   return true;
