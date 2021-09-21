@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import '../components/formelements.dart';
 
 enum Choice { Customer, Garage }
 
@@ -22,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
           centerTitle: true,
         ),
         body: Container(
-          padding: EdgeInsets.all(48.0),
+          padding: EdgeInsets.all(36.0),
           child: Center(
               child: SingleChildScrollView(
             reverse: true,
