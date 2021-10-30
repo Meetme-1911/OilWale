@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oilwale/service/auth.dart';
 
 enum Choice { Customer, Garage }
 
@@ -9,6 +10,27 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   Choice? _choice = Choice.Customer;
+  String _phone = "", _pwd = "", _errorText = "";
+
+  GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
+  String? phoneValidate(String? inp) {
+    if (inp == null || inp == "") {
+      return "Required *";
+    } else if (inp.length != 10) {
+      return "Enter a valid 10 digit number";
+    }
+    return null;
+  }
+
+  String? pwdValidate(String? inp) {
+    if (inp == null || inp == "") {
+      return "Required *";
+    } else if (inp.length > 32 || inp.length < 8) {
+      return "Enter a valid 8-32 length password";
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,77 +50,115 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Form(
+                    key: _formkey,
+                    child: Column(children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: TextFormField(
+                          onChanged: (String inp) {
+                            _phone = inp;
+                          },
+                          validator: phoneValidate,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                              icon: Icon(
+                                Icons.phone,
+                                color: Colors.deepOrange,
+                              ),
+                              hintText: '000-000-0000',
+                              labelText: 'Enter phone',
+                              labelStyle: TextStyle(color: Colors.deepOrange),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                                borderSide: BorderSide(
+                                  color: Colors.deepOrange,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.deepOrange)),
+                              hintStyle: TextStyle(color: Colors.deepOrange)),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: TextFormField(
+                          obscureText: true,
+                          onChanged: (String inp) {
+                            _pwd = inp;
+                          },
+                          validator: pwdValidate,
+                          decoration: InputDecoration(
+                              icon: Icon(
+                                Icons.password,
+                                color: Colors.deepOrange,
+                              ),
+                              hintText: "Secret",
+                              labelText: 'Enter password',
+                              labelStyle: TextStyle(color: Colors.deepOrange),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                                borderSide: BorderSide(
+                                  color: Colors.deepOrange,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.deepOrange)),
+                              hintStyle: TextStyle(color: Colors.deepOrange)),
+                        ),
+                      ),
+                      RadioListTile<Choice>(
+                        title: const Text('Login as Customer'),
+                        value: Choice.Customer,
+                        groupValue: _choice,
+                        onChanged: (Choice? value) {
+                          setState(() {
+                            _choice = value;
+                          });
+                        },
+                      ),
+                      RadioListTile<Choice>(
+                        title: const Text('Login as Garage Dealer'),
+                        value: Choice.Garage,
+                        groupValue: _choice,
+                        onChanged: (Choice? value) {
+                          setState(() {
+                            _choice = value;
+                          });
+                        },
+                      ),
+                    ])),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        icon: Icon(
-                          Icons.phone,
-                          color: Colors.deepOrange,
-                        ),
-                        hintText: '000-000-0000',
-                        labelText: 'Enter phone',
-                        labelStyle: TextStyle(color: Colors.deepOrange),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.deepOrange,
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.deepOrange)),
-                        hintStyle: TextStyle(color: Colors.deepOrange)),
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 8.0),
+                  child: Text(
+                    _errorText,
+                    style: TextStyle(fontSize: 16.0, color: Colors.red),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        icon: Icon(
-                          Icons.password,
-                          color: Colors.deepOrange,
-                        ),
-                        hintText: "Secret",
-                        labelText: 'Enter password',
-                        labelStyle: TextStyle(color: Colors.deepOrange),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(
-                            color: Colors.deepOrange,
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.deepOrange)),
-                        hintStyle: TextStyle(color: Colors.deepOrange)),
-                  ),
-                ),
-                RadioListTile<Choice>(
-                  title: const Text('Login as Customer'),
-                  value: Choice.Customer,
-                  groupValue: _choice,
-                  onChanged: (Choice? value) {
-                    setState(() {
-                      _choice = value;
-                    });
-                  },
-                ),
-                RadioListTile<Choice>(
-                  title: const Text('Login as Garage Dealer'),
-                  value: Choice.Garage,
-                  groupValue: _choice,
-                  onChanged: (Choice? value) {
-                    setState(() {
-                      _choice = value;
-                    });
-                  },
                 ),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    if (_formkey.currentState != null &&
+                        !_formkey.currentState!.validate()) {
+                      return;
+                    }
                     if (_choice == Choice.Customer) {
-                      Navigator.pushReplacementNamed(context, '/cust_home');
+                      if (await AuthManager.login(_phone, _pwd, true)) {
+                        Navigator.pushReplacementNamed(context, '/cust_home');
+                      } else {
+                        setState(() {
+                          _errorText = "Invalid phone number";
+                        });
+                      }
                     } else if (_choice == Choice.Garage) {
-                      Navigator.pushReplacementNamed(context, '/garage_home');
+                      if (await AuthManager.login(_phone, _pwd, false)) {
+                        Navigator.pushReplacementNamed(context, '/garage_home');
+                      } else {
+                        setState(() {
+                          _errorText = "Unregistered phone number";
+                        });
+                      }
                     }
                   },
                   style: ButtonStyle(

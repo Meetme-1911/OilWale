@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
-import 'package:Oilwale/components/product_tile.dart';
-import 'package:Oilwale/service/product_api.dart';
+import 'package:oilwale/components/product_tile.dart';
+import 'package:oilwale/service/product_api.dart';
 
 class ProductListView extends StatefulWidget {
   ProductListView({Key? key}) : super(key: key);

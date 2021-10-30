@@ -1,6 +1,7 @@
 import 'dart:convert';
-import 'package:Oilwale/models/customer.dart';
+import 'package:oilwale/models/customer.dart';
 import 'package:http/http.dart' as http;
+import 'package:oilwale/models/customervehicle.dart';
 
 const String base_url = "https://oilwale.herokuapp.com/api";
 
@@ -48,5 +49,16 @@ class CustomerAPIManager {
       print("StackTrace $s");
     }
     return false;
+  }
+
+  static Future<List<CustomerVehicle>> getCustomerVehicles(
+      Map<String, dynamic> data) async {
+    try {
+      return [];
+    } catch (e, s) {
+      print("Exception $e");
+      print("StackTrace $s");
+    }
+    return [];
   }
 }

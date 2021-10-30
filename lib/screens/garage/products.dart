@@ -1,8 +1,8 @@
 // import 'dart:convert';
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
-import 'package:Oilwale/models/productcatalog.dart';
-import 'package:Oilwale/widgets/ItemWidget.dart';
+import 'package:oilwale/models/productcatalog.dart';
+import 'package:oilwale/widgets/ItemWidget.dart';
 
 class ProductsPage extends StatefulWidget {
   const ProductsPage({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Oilwale/screens/garage/offerdetails.dart';
+import 'package:oilwale/screens/garage/offerdetails.dart';
 
 class OffersPage extends StatefulWidget {
   const OffersPage({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/customer/index.dart';
 import 'components/addvehicleform.dart';
-import 'package:Oilwale/screens/garage/garage_scaffold.dart';
+import 'package:oilwale/screens/garage/garage_scaffold.dart';
 
 void main() {
   runApp(MaterialApp(

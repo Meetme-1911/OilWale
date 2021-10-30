@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:Oilwale/screens/customer/home/vehicles.dart';
-import 'package:Oilwale/screens/customer/home/profile.dart';
-import 'package:Oilwale/screens/customer/home/garage.dart';
-import 'package:Oilwale/screens/customer/home/products.dart';
+import 'package:oilwale/screens/customer/home/vehicles.dart';
+import 'package:oilwale/screens/customer/home/profile.dart';
+import 'package:oilwale/screens/customer/home/garage.dart';
+import 'package:oilwale/screens/customer/home/products.dart';
 
 Widget getItem(idx) {
   switch (idx) {
