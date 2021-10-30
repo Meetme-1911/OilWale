@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../PAGES/offers.dart';
-import '../PAGES/products.dart';
-import '../PAGES/home_page.dart';
-import '../PAGES/profile.dart';
+import 'package:Oilwale/screens/garage/offers.dart';
+import 'package:Oilwale/screens/garage/products.dart';
+import 'package:Oilwale/screens/garage/home_page.dart';
+import 'package:Oilwale/screens/garage/profile.dart';
 
 class GarageScaffold extends StatefulWidget {
   const GarageScaffold({Key? key}) : super(key: key);

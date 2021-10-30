@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../components/garagelist.dart';
+import 'package:Oilwale/components/garagelist.dart';
 
 class GarageScreen extends StatelessWidget {
   @override
