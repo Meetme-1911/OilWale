@@ -8,7 +8,6 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Material(
       child: SingleChildScrollView(
         child: Padding(

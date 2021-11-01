@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'components/vehicledetails.dart';
 import 'screens/customer/index.dart';
 import 'components/addvehicleform.dart';
 import 'package:oilwale/screens/garage/garage_scaffold.dart';
@@ -26,6 +27,7 @@ void main() {
       // '/': (context) => SplashScreen(),
       '/login': (context) => LoginScreen(),
       '/cust_home': (context) => HomeScreen(),
+      '/cust_vehicle': (context) => VehicleDetails(),
       '/cust_createAccount': (context) => CreateAccountScreen(),
       '/cust_addvehicle': (context) => AddVehicleForm(),
       '/garage_home': (context) => GarageScaffold(),

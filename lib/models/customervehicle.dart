@@ -2,7 +2,7 @@ class CustomerVehicle {
   late final String id;
   late final String model;
   late final String brand;
-  late final int? kmTravelled;
+  late final int? kmperday;
   late final String? numberPlate;
   late final int? currentKM;
 
@@ -10,16 +10,16 @@ class CustomerVehicle {
       {required this.id,
       required this.model,
       required this.brand,
-      this.kmTravelled,
+      this.kmperday,
       this.numberPlate,
       this.currentKM});
 
   CustomerVehicle.fromJSON(Map<String, dynamic> json) {
-    this.id = json['productId'];
-    this.model = json['productName'];
-    this.brand = json['grade'];
-    this.kmTravelled = json['specification'];
-    this.numberPlate = json['packageSize'];
-    this.currentKM = json['productImage'];
+    this.id = json['id'];
+    this.model = json['model'];
+    this.brand = json['brand'];
+    this.kmperday = json['kmperday'];
+    this.numberPlate = json['numberPlate'];
+    this.currentKM = json['currentKM'];
   }
 }

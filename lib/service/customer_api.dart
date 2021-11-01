@@ -52,9 +52,31 @@ class CustomerAPIManager {
   }
 
   static Future<List<CustomerVehicle>> getCustomerVehicles(
-      Map<String, dynamic> data) async {
+      String customerId) async {
     try {
-      return [];
+      return [
+        CustomerVehicle(
+            id: "123",
+            model: "Hayabusa",
+            brand: "Suzuki",
+            numberPlate: "GJ02FX4567",
+            kmperday: 1,
+            currentKM: 100),
+        CustomerVehicle(
+            id: "133",
+            model: "Z1",
+            brand: "Yamaha",
+            numberPlate: "GJ01RX7867",
+            kmperday: 4,
+            currentKM: 500),
+        CustomerVehicle(
+            id: "143",
+            model: "Dream Yuga",
+            brand: "Hero",
+            numberPlate: "GJ01FF1044",
+            kmperday: 5,
+            currentKM: 450),
+      ];
     } catch (e, s) {
       print("Exception $e");
       print("StackTrace $s");

@@ -17,7 +17,9 @@ class _ProductListViewState extends State<ProductListView> {
   void initState() {
     super.initState();
     ProductAPIManager.getProducts().then((resp) {
-      _pList = resp;
+      setState(() {
+        _pList = resp;
+      });
     }).onError((error, stackTrace) {
       print(error);
     });
