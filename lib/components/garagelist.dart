@@ -1,54 +1,35 @@
 import 'package:flutter/material.dart';
-import './oilwale_theme.dart';
-
-class Garage {
-  int? id;
-  String? name;
-  int? pincode;
-  String? address;
-  Garage({this.id, this.name, this.pincode, this.address});
-}
-
-class GarageTile extends StatelessWidget {
-  final Garage garage;
-
-  const GarageTile({Key? key, required this.garage}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.symmetric(vertical: 4.0),
-        padding: EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(color: Colors.deepOrange))),
-        // color: Colors.deepOrange,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "${garage.name}",
-              style: deepOrangeTS(fontSize: 20),
-            ),
-            Text(
-              "${garage.pincode}",
-              style: deepOrangeTS(fontSize: 12),
-            ),
-            Text(
-              "${garage.address}",
-              style: deepOrangeTS(fontSize: 12),
-            )
-          ],
-        ));
-  }
-}
+import 'package:oilwale/components/garage_tile.dart';
+import 'package:oilwale/models/garage.dart';
 
 List<Garage> allGarages = [
   new Garage(
-      id: 1, name: "Garage1", pincode: 123456, address: "example addresss"),
+      id: "1",
+      garageName: "Jet Set Go",
+      pincode: "124356",
+      address: "example addresss",
+      area: 'Ahemdabad',
+      ownerName: 'Ramesh',
+      phoneNumber: '9898989898',
+      referralCode: 'ASG154L'),
   new Garage(
-      id: 2, name: "Garage2", pincode: 123456, address: "example addresss"),
+      id: "2",
+      garageName: "Suresh Autoshop",
+      pincode: "145236",
+      address: "example addresss",
+      area: 'Ahemdabad',
+      ownerName: 'Suresh',
+      phoneNumber: '9711895298',
+      referralCode: 'G5G154L'),
   new Garage(
-      id: 3, name: "Garage3", pincode: 123456, address: "example addresss"),
+      id: "3",
+      garageName: "Shiv Garage",
+      pincode: "312456",
+      address: "example addresss",
+      area: 'Gandhinagar',
+      ownerName: 'Mahesh',
+      phoneNumber: '7120835298',
+      referralCode: 'HJG184Q')
 ];
 
 class GarageListView extends StatefulWidget {
@@ -77,14 +58,11 @@ class _GarageListViewState extends State<GarageListView> {
             setState(() {
               String inpLowercase = input.toLowerCase();
               _gList = allGarages.where((g) {
-                if (g.name!.toLowerCase().contains(inpLowercase)) {
+                if (g.garageName.toLowerCase().contains(inpLowercase)) {
                   return true;
-                } else if (g.pincode!
-                    .toString()
-                    .toLowerCase()
-                    .contains(inpLowercase)) {
+                } else if (g.pincode.toLowerCase().contains(inpLowercase)) {
                   return true;
-                } else if (g.address!.toLowerCase().contains(inpLowercase)) {
+                } else if (g.address.toLowerCase().contains(inpLowercase)) {
                   return true;
                 } else {
                   return false;
