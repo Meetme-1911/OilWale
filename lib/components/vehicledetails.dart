@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oilwale/components/editvehicledetail.dart';
 import 'package:oilwale/components/vehicledetailblock.dart';
 import 'package:oilwale/models/customervehicle.dart';
 
@@ -8,9 +9,43 @@ class VehicleDetails extends StatefulWidget {
 }
 
 class _VehicleDetailsState extends State<VehicleDetails> {
+  var args;
+  VehicleDetailBlock? _vehicleDetailBlock;
+  EditVehicleDetailBlock? _editVehicleDetailBlock;
+  bool isEditing = false;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   args = ModalRoute.of(context)!.settings.arguments as String;
+  // }
+
+  Widget? toggleForm() {
+    if (isEditing) {
+      return _editVehicleDetailBlock;
+    }
+    return _vehicleDetailBlock;
+  }
+
+  IconData getEditButtonIcon() {
+    if (isEditing) {
+      return Icons.save;
+    }
+    return Icons.edit;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as String;
+    args = ModalRoute.of(context)!.settings.arguments as String;
+    _vehicleDetailBlock = VehicleDetailBlock(
+        customerVehicle: CustomerVehicle(
+            brand: "Hero",
+            id: args,
+            model: "YuYu",
+            numberPlate: "11 22 33",
+            currentKM: 428,
+            kmperday: 12));
+    _editVehicleDetailBlock = EditVehicleDetailBlock();
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -42,21 +77,35 @@ class _VehicleDetailsState extends State<VehicleDetails> {
                               fontWeight: FontWeight.bold, fontSize: 24.0),
                         ),
                         ElevatedButton(
-                            onPressed: () {}, child: Icon(Icons.edit))
+                            onPressed: () {
+                              setState(() {
+                                isEditing = !isEditing;
+                              });
+                            },
+                            child: Icon(getEditButtonIcon()))
                       ],
                     ),
-                    VehicleDetailBlock(
-                      customerVehicle: CustomerVehicle(
-                          brand: "Hero",
-                          id: args,
-                          model: "YuYu",
-                          numberPlate: "11 22 33",
-                          currentKM: 428,
-                          kmperday: 12),
+                    SizedBox(
+                      height: 16.0,
                     ),
+                    toggleForm() ?? Container(),
                   ],
                 ),
               ),
+              Divider(
+                height: 24.0,
+              ),
+              Text(
+                "Last Serviced",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+              ),
+              Divider(
+                height: 24.0,
+              ),
+              Text(
+                "Recommend Products",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+              )
             ],
           ),
         ));

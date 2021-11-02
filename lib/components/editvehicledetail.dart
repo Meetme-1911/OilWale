@@ -50,9 +50,6 @@ class EditVehicleDetailBlock extends StatelessWidget {
               icon: Icon(Icons.timeline),
             ),
           ),
-          SizedBox(
-            height: 120.0,
-          ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: ElevatedButton(
