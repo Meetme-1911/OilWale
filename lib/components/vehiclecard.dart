@@ -13,7 +13,6 @@ class VehicleCard extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       child: MaterialButton(
         onPressed: () {
-          print("someone touched me");
           Navigator.pushNamed(context, "/cust_vehicle",
               arguments: customerVehicle.id);
         },
