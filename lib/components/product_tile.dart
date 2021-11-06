@@ -9,6 +9,7 @@ class ProductTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      padding: EdgeInsets.zero,
       onPressed: () {
         Navigator.pushNamed(context, "/cust_product", arguments: product.id);
       },

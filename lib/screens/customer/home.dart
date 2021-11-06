@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Container(
-        color: Colors.grey[300],
+        color: Colors.grey[200],
         child: getItem(idx),
       ),
       bottomNavigationBar: BottomNavigationBar(

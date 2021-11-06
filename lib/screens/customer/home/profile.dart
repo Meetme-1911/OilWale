@@ -1,10 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:oilwale/components/oilwale_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  bool? active;
+  String? customerId;
+  String? customerName;
+  String? customerPhoneNumber;
+  String? customerAddress;
+  String? customerPincode;
+  String? garageReferralCode;
+
+  TextStyle h1 = const TextStyle(fontSize: 12, color: Colors.deepOrange);
+  TextStyle p1 = const TextStyle(fontSize: 18, color: Colors.black);
+
+  Future<void> getCustomerPrefs() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    customerName = preferences.getString("customerName");
+    customerPhoneNumber = preferences.getString("customerPhoneNumber");
+    customerAddress = preferences.getString("customerAddress");
+    customerPincode = preferences.getString("customerPincode");
+    garageReferralCode = preferences.getString("garageReferralCode");
+  }
+
   @override
   Widget build(BuildContext context) {
+    getCustomerPrefs().then((value) {
+      setState(() {});
+    });
     return Container(
+      color: Colors.white,
       padding: EdgeInsets.all(16.0),
       child: Center(
           child: Column(
@@ -32,12 +61,12 @@ class ProfileScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Name",
-                      style: deepOrangeTS(fontSize: 12),
+                      'Name',
+                      style: h1,
                     ),
                     Text(
-                      "XYZ Kumar",
-                      style: TextStyle(fontSize: 18),
+                      customerName ?? 'Loading..',
+                      style: p1,
                     ),
                   ],
                 )
@@ -47,32 +76,42 @@ class ProfileScreen extends StatelessWidget {
           Divider(),
           SizedBox(height: 10),
           Text(
-            "Phone",
-            style: deepOrangeTS(fontSize: 12),
+            'Phone',
+            style: h1,
           ),
           Text(
-            "1230456789",
-            style: TextStyle(fontSize: 18),
-          ),
-          Divider(),
-          SizedBox(height: 10),
-          Text(
-            "Address",
-            style: deepOrangeTS(fontSize: 12),
-          ),
-          Text(
-            "XYZ city, asd qwadsd",
-            style: TextStyle(fontSize: 18),
+            customerPhoneNumber ?? 'Loading..',
+            style: p1,
           ),
           Divider(),
           SizedBox(height: 10),
           Text(
-            "Total number of time oil serviced",
-            style: deepOrangeTS(fontSize: 12),
+            'Address',
+            style: h1,
           ),
           Text(
-            "12",
-            style: TextStyle(fontSize: 18),
+            customerAddress ?? 'Loading..',
+            style: p1,
+          ),
+          Divider(),
+          SizedBox(height: 10),
+          Text(
+            'PINCODE',
+            style: h1,
+          ),
+          Text(
+            customerPincode ?? 'Loading..',
+            style: p1,
+          ),
+          Divider(),
+          SizedBox(height: 10),
+          Text(
+            'Total number of time oil serviced',
+            style: h1,
+          ),
+          Text(
+            '12',
+            style: p1,
           ),
           Divider(),
           SizedBox(height: 10),

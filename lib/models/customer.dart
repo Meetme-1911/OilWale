@@ -1,16 +1,16 @@
 class Customer {
-  late bool isActive;
+  late bool active;
   late String customerId;
   late String customerName;
   late String customerPhoneNumber;
   late String customerAddress;
   late String customerPincode;
   String? garageReferralCode;
-  late String createdAt;
-  DateTime? updatedAt;
+  String? createdAt;
+  String? updatedAt;
 
   Customer(
-      {required this.isActive,
+      {required this.active,
       required this.customerId,
       required this.customerName,
       required this.customerPhoneNumber,
@@ -21,9 +21,9 @@ class Customer {
       required this.updatedAt});
 
   Customer.fromJSON(Map<String, dynamic> json) {
-    this.isActive = json['isActive'];
+    this.active = json['active'];
     this.customerId = json['customerId'];
-    this.customerName = json['productId'];
+    this.customerName = json['customerName'];
     this.customerPhoneNumber = json['customerPhoneNumber'];
     this.customerAddress = json['customerAddress'];
     this.customerPincode = json['customerPincode'];

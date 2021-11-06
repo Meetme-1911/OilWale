@@ -49,23 +49,6 @@ class EditVehicleDetailBlock extends StatelessWidget {
               label: 'Dairy KM travel',
               icon: Icon(Icons.timeline),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: ElevatedButton(
-                onPressed: () {
-                  print("vehicle added");
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Submit",
-                    style: TextStyle(fontSize: 24.0),
-                  ),
-                ),
-                style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all(
-                        Size.fromWidth(MediaQuery.of(context).size.width)))),
           )
         ],
       ),

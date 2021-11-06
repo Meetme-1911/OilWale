@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/rendering.dart';
 
-class ProductPage extends StatefulWidget {
+class GaragePage extends StatefulWidget {
   @override
-  _ProductPageState createState() => _ProductPageState();
+  _GaragePageState createState() => _GaragePageState();
 }
 
-class _ProductPageState extends State<ProductPage> {
+class _GaragePageState extends State<GaragePage> {
   var args;
   final TextStyle heading1 = const TextStyle(
-      fontWeight: FontWeight.bold, fontSize: 28.0, color: Colors.black);
+    fontWeight: FontWeight.bold,
+    fontSize: 28.0,
+    color: Colors.black,
+  );
   final TextStyle heading2 = const TextStyle(
       fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.black);
   final TextStyle desc = const TextStyle(
@@ -37,7 +41,7 @@ class _ProductPageState extends State<ProductPage> {
             onPressed: () => Navigator.of(context).pop(),
           ),
           title: Text(
-            "Product name",
+            "Garage name",
             style: TextStyle(color: Colors.deepOrange),
           ),
         ),
@@ -78,7 +82,7 @@ class _ProductPageState extends State<ProductPage> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Product A",
+                      "Garage A",
                       textAlign: TextAlign.center,
                       style: heading1,
                     ),
@@ -86,21 +90,42 @@ class _ProductPageState extends State<ProductPage> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Product A Description, very good product i dont know to write here",
+                      "xyz street, navragpura, ahemdabad.",
+                      style: desc,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "PINCODE: 345441",
                       style: desc,
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      "Recommended Models:",
+                      "Contact Details",
                       style: heading2,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "\nModel1 Brand1" + "\nModel1 Brand2" + "\nModel2 Brand1",
+                      "Owner: ABC Sharma",
+                      style: desc,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Phone: 0123456789",
+                      style: desc,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Alt. Phone: 0123456789",
                       style: desc,
                     ),
                   ),

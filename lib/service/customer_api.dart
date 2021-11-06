@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:oilwale/models/customer.dart';
 import 'package:http/http.dart' as http;
 import 'package:oilwale/models/customervehicle.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 const String base_url = "https://oilwale.herokuapp.com/api";
 
@@ -10,13 +11,27 @@ class CustomerAPIManager {
   static Future<dynamic> getCustomerDetail(String customerId) async {
     try {
       var client = http.Client();
-      String urlStr = base_url + "/getAllProduct/" + customerId;
+      String urlStr = base_url + "/getCustomerById/" + customerId;
       var url = Uri.parse(urlStr);
       var response = await client.get(url);
       if (response.statusCode == 200) {
         var jsonString = response.body;
         Map<String, dynamic> jsonMap = jsonDecode(jsonString);
-        return Customer.fromJSON(jsonMap);
+        print(jsonMap);
+        Customer customer = Customer.fromJSON(jsonMap);
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+
+        // store in preferences
+        preferences.setString('customerId', jsonMap['customerId']);
+        preferences.setString('customerName', jsonMap['customerName']);
+        preferences.setString('customerAddress', jsonMap['customerAddress']);
+        preferences.setString('customerPincode', jsonMap['customerPincode']);
+        if (jsonMap['garageReferralCode'] != null) {
+          preferences.setString(
+              'garageReferralCode', jsonMap['garageReferralCode']);
+        }
+
+        return customer;
       } else {
         return false;
       }

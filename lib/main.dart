@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oilwale/screens/customer/home/garagepage.dart';
 import 'package:oilwale/screens/customer/home/productpage.dart';
 import 'package:oilwale/components/vehicledetails.dart';
 import 'package:oilwale/screens/customer/index.dart';
@@ -30,6 +31,7 @@ void main() {
       '/cust_home': (context) => HomeScreen(),
       '/cust_vehicle': (context) => VehicleDetails(),
       '/cust_product': (context) => ProductPage(),
+      '/cust_garage': (context) => GaragePage(),
       '/cust_createAccount': (context) => CreateAccountScreen(),
       '/cust_addvehicle': (context) => AddVehicleForm(),
       '/garage_home': (context) => GarageScaffold(),
