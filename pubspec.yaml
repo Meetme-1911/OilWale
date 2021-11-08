@@ -26,6 +26,7 @@ dependencies:
   flutter_spinkit: ^5.0.0
   carousel_slider: ^4.0.0
   shared_preferences: ^2.0.6
+  flutter_native_splash: ^1.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -39,6 +40,14 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+# for splash screen settings
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/img/mplubricantslogo.png
+  android: true
+  ios: true
+
 
 # The following section is specific to Flutter.
 flutter:
