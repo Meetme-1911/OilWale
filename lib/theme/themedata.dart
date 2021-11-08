@@ -23,7 +23,7 @@ TextStyle textStyle(String tag, Color? color) {
     case 'h4':
       return TextStyle(
           fontSize: 24.0, fontWeight: FontWeight.bold, color: colorToUse);
-    case 'h4':
+    case 'h5':
       return TextStyle(
           fontSize: 18.0, fontWeight: FontWeight.bold, color: colorToUse);
     case 'p1':
