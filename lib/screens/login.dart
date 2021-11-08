@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oilwale/theme/themedata.dart';
 import 'package:oilwale/service/auth.dart';
 
 enum Choice { Customer, Garage }
@@ -38,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
         appBar: AppBar(
           title: Text(
             "Oilwale",
-            style: TextStyle(color: Colors.deepOrange),
+            style: TextStyle(color: AppColorSwatche.primary),
           ),
           centerTitle: true,
         ),
@@ -68,17 +69,20 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               hintText: '000-000-0000',
                               labelText: 'Enter phone',
-                              labelStyle: TextStyle(color: Colors.deepOrange),
+                              labelStyle:
+                                  TextStyle(color: AppColorSwatche.primary),
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
+                                borderRadius: BorderRadius.circular(24.0),
                                 borderSide: BorderSide(
-                                  color: Colors.deepOrange,
+                                  color: AppColorSwatche.primary,
                                 ),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.deepOrange)),
-                              hintStyle: TextStyle(color: Colors.deepOrange)),
+                                  borderRadius: BorderRadius.circular(24.0),
+                                  borderSide: BorderSide(
+                                      color: AppColorSwatche.primary)),
+                              hintStyle:
+                                  TextStyle(color: AppColorSwatche.primary)),
                         ),
                       ),
                       Padding(
@@ -98,15 +102,17 @@ class _LoginScreenState extends State<LoginScreen> {
                               labelText: 'Enter password',
                               labelStyle: TextStyle(color: Colors.deepOrange),
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
+                                borderRadius: BorderRadius.circular(24.0),
                                 borderSide: BorderSide(
                                   color: Colors.deepOrange,
                                 ),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.deepOrange)),
-                              hintStyle: TextStyle(color: Colors.deepOrange)),
+                                  borderRadius: BorderRadius.circular(24.0),
+                                  borderSide: BorderSide(
+                                      color: AppColorSwatche.primary)),
+                              hintStyle:
+                                  TextStyle(color: AppColorSwatche.primary)),
                         ),
                       ),
                       RadioListTile<Choice>(
@@ -134,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 8.0),
                   child: Text(
                     _errorText,
-                    style: TextStyle(fontSize: 16.0, color: Colors.red),
+                    style: textStyle('p1', Colors.red),
                   ),
                 ),
                 ElevatedButton(
@@ -165,13 +171,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     */
                   },
                   style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      )),
                       fixedSize: MaterialStateProperty.all(
                           Size.fromWidth(MediaQuery.of(context).size.width))),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'Login',
-                      style: TextStyle(fontSize: 16.0),
+                      style: textStyle('p1', Colors.white),
                     ),
                   ),
                 ),
@@ -190,13 +200,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.pushNamed(context, '/cust_createAccount');
                   },
                   style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      )),
                       fixedSize: MaterialStateProperty.all(
                           Size.fromWidth(MediaQuery.of(context).size.width))),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       'Create New Customer Account',
-                      style: TextStyle(fontSize: 16.0),
+                      style: textStyle('p1', Colors.white),
                     ),
                   ),
                 )
