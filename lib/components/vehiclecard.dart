@@ -40,7 +40,7 @@ class VehicleCard extends StatelessWidget {
                   height: 16,
                 ),
                 Text(
-                    "KM Reading: ${customerVehicle.currentKM}, ${customerVehicle.kmperday}/day",
+                    "KM Reading: ${customerVehicle.currentKM}, ${customerVehicle.kmperday} KM/day",
                     style: TextStyle(
                         fontSize: 12.0, fontWeight: FontWeight.normal)),
               ],

@@ -9,12 +9,13 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPageState extends State<ProductPage> {
   Product? product;
+  EdgeInsets p1 = EdgeInsets.all(4);
   final TextStyle heading1 = const TextStyle(
       fontWeight: FontWeight.bold, fontSize: 28.0, color: Colors.black);
   final TextStyle heading2 = const TextStyle(
       fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.black);
   final TextStyle desc = const TextStyle(
-      fontWeight: FontWeight.normal, fontSize: 14.0, color: Colors.grey);
+      fontWeight: FontWeight.normal, fontSize: 16.0, color: Colors.grey);
   final List<String> imageURLList = [
     'https://picsum.photos/200',
     'https://picsum.photos/200',
@@ -52,7 +53,7 @@ class _ProductPageState extends State<ProductPage> {
                   Container(
                       child: CarouselSlider(
                     options: CarouselOptions(
-                        height: MediaQuery.of(context).size.height / 2,
+                        height: MediaQuery.of(context).size.height / 2.4,
                         enlargeCenterPage: true,
                         enableInfiniteScroll: false),
                     items: imageURLList
@@ -111,12 +112,14 @@ class _ProductPageState extends State<ProductPage> {
                         children: [
                           TableRow(children: [
                             Container(
+                              padding: p1,
                               child: Text(
                                 'Grade',
                                 style: desc,
                               ),
                             ),
                             Container(
+                              padding: p1,
                               child: Text(product == null
                                   ? 'Not found'
                                   : product!.grade),
@@ -124,9 +127,11 @@ class _ProductPageState extends State<ProductPage> {
                           ]),
                           TableRow(children: [
                             Container(
+                              padding: p1,
                               child: Text('Package Size', style: desc),
                             ),
                             Container(
+                              padding: p1,
                               child: Text(product == null
                                   ? 'Not found'
                                   : (product!.packageSize ?? 'NA')),

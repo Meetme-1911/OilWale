@@ -67,7 +67,7 @@ class _AddVehicleFormState extends State<AddVehicleForm> {
           ),
         ),
         body: Container(
-          padding: EdgeInsets.all(48.0),
+          padding: EdgeInsets.all(16.0),
           child: Center(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
