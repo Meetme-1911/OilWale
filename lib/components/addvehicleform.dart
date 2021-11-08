@@ -53,7 +53,7 @@ class AddVehicleForm extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: TextInput(
                   hint: '102453',
-                  label: 'Dairy KM travel',
+                  label: 'Daily KM travel',
                   icon: Icon(Icons.timeline),
                 ),
               ),

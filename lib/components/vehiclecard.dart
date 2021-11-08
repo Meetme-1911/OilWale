@@ -15,7 +15,7 @@ class VehicleCard extends StatelessWidget {
         padding: EdgeInsets.zero,
         onPressed: () {
           Navigator.pushNamed(context, "/cust_vehicle",
-              arguments: customerVehicle.id);
+              arguments: customerVehicle);
         },
         child: Container(
           decoration: BoxDecoration(

@@ -139,6 +139,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
+                    Navigator.pushReplacementNamed(context, '/cust_home');
+                    /*
                     if (_formkey.currentState != null &&
                         !_formkey.currentState!.validate()) {
                       return;
@@ -160,6 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         });
                       }
                     }
+                    */
                   },
                   style: ButtonStyle(
                       fixedSize: MaterialStateProperty.all(

@@ -2,7 +2,7 @@ class Product {
   late final String id;
   late final String name;
   late final String grade;
-  late final String? specification;
+  late final String specification;
   late final String? packageSize;
   late final String? image;
 
@@ -10,7 +10,7 @@ class Product {
       {required this.id,
       required this.name,
       required this.grade,
-      this.specification,
+      required this.specification,
       this.packageSize,
       this.image});
 

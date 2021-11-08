@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:oilwale/models/product.dart';
 
 class ProductPage extends StatefulWidget {
   @override
@@ -7,7 +8,7 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-  var args;
+  Product? product;
   final TextStyle heading1 = const TextStyle(
       fontWeight: FontWeight.bold, fontSize: 28.0, color: Colors.black);
   final TextStyle heading2 = const TextStyle(
@@ -29,7 +30,7 @@ class _ProductPageState extends State<ProductPage> {
 
   @override
   Widget build(BuildContext context) {
-    args = ModalRoute.of(context)!.settings.arguments as String;
+    product = ModalRoute.of(context)!.settings.arguments as Product;
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -37,7 +38,7 @@ class _ProductPageState extends State<ProductPage> {
             onPressed: () => Navigator.of(context).pop(),
           ),
           title: Text(
-            "Product name",
+            product == null ? 'Not found' : product!.name,
             style: TextStyle(color: Colors.deepOrange),
           ),
         ),
@@ -78,7 +79,7 @@ class _ProductPageState extends State<ProductPage> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Product A",
+                      product == null ? 'Not found' : product!.name,
                       textAlign: TextAlign.center,
                       style: heading1,
                     ),
@@ -86,10 +87,53 @@ class _ProductPageState extends State<ProductPage> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Product A Description, very good product i dont know to write here",
+                      'Description:',
+                      style: heading2,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      product == null ? 'Not found' : product!.specification,
                       style: desc,
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Details:',
+                      style: heading2,
+                    ),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Table(
+                        children: [
+                          TableRow(children: [
+                            Container(
+                              child: Text(
+                                'Grade',
+                                style: desc,
+                              ),
+                            ),
+                            Container(
+                              child: Text(product == null
+                                  ? 'Not found'
+                                  : product!.grade),
+                            )
+                          ]),
+                          TableRow(children: [
+                            Container(
+                              child: Text('Package Size', style: desc),
+                            ),
+                            Container(
+                              child: Text(product == null
+                                  ? 'Not found'
+                                  : (product!.packageSize ?? 'NA')),
+                            )
+                          ])
+                        ],
+                      )),
                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(

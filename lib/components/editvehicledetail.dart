@@ -1,30 +1,111 @@
 import 'package:flutter/material.dart';
 import 'package:oilwale/components/formelements.dart';
+import 'package:oilwale/models/vehicle.dart';
+import 'package:oilwale/models/vehiclecompany.dart';
+import 'package:oilwale/service/vehicle_api.dart';
 
-class EditVehicleDetailBlock extends StatelessWidget {
-// late final String id;
-// late final String model;
-// late final String brand;
-// late final int? kmperday;
-// late final String? numberPlate;
-// late final int? currentKM;
+class EditVehicleDetailBlock extends StatefulWidget {
+  @override
+  _EditVehicleDetailBlockState createState() => _EditVehicleDetailBlockState();
+}
+
+class _EditVehicleDetailBlockState extends State<EditVehicleDetailBlock> {
+  List<VehicleCompany> _company = [];
+  List<Vehicle> _models = [];
+  bool loadingVCList = true;
+  bool loadingVMList = true;
+  Text loadingDDM = Text(
+    'Loading Options..',
+    style: TextStyle(fontSize: 24.0),
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    VehicleAPIManager.getAllVehicleCompanies().then((result) {
+      setState(() {
+        loadingVCList = false;
+        _company = result;
+      });
+    });
+  }
+
+  void changeModelList(String vehicleCompanyId) {
+    setState(() {
+      loadingVMList = true;
+    });
+    VehicleAPIManager.getVehiclesByCompanyId(vehicleCompanyId).then((_result) {
+      setState(() {
+        _models = _result;
+        loadingVMList = false;
+      });
+    });
+  }
+
+  DropdownMenuItem<String> vehicleCompanyDDMB(VehicleCompany vehicleCompany) {
+    return DropdownMenuItem(
+        value: vehicleCompany.vehicleCompanyId,
+        child: Text(vehicleCompany.vehicleCompany));
+  }
+
+  DropdownMenuItem<String> vehicleModelDDMB(Vehicle vehicle) {
+    return DropdownMenuItem(
+        value: vehicle.vehicleId, child: Text(vehicle.vehicleModel));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: DropDownMenu(
-              dpmItems: ['Brand1', 'Brand2', 'Brand3'],
-            ),
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.only(bottom: 8.0),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.deepOrange),
+                borderRadius: BorderRadius.all(Radius.circular(8.0))),
+            child: loadingVCList
+                ? loadingDDM
+                : DropdownButton<String>(
+                    icon: const Icon(Icons.arrow_downward),
+                    iconSize: 24,
+                    elevation: 16,
+                    isExpanded: true,
+                    underline: Container(
+                      height: 2,
+                      // color: Colors.deepPurpleAccent,
+                    ),
+                    onChanged: (String? vehicleCompanyId) {
+                      print('Selected: ' + (vehicleCompanyId ?? ''));
+                      changeModelList(vehicleCompanyId ?? '');
+                    },
+                    value: _company.length != 0
+                        ? _company[0].vehicleCompanyId
+                        : null,
+                    items: _company.map((e) => vehicleCompanyDDMB(e)).toList()),
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: DropDownMenu(
-              dpmItems: ['Model1', 'Model2', 'Model3'],
-            ),
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            margin: const EdgeInsets.only(bottom: 8.0),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.deepOrange),
+                borderRadius: BorderRadius.all(Radius.circular(8.0))),
+            child: loadingVMList
+                ? loadingDDM
+                : DropdownButton<String>(
+                    icon: const Icon(Icons.arrow_downward),
+                    iconSize: 24,
+                    elevation: 16,
+                    isExpanded: true,
+                    underline: Container(
+                      height: 2,
+                      // color: Colors.deepPurpleAccent,
+                    ),
+                    onChanged: (String? vehicleId) {
+                      print('Selected: ' + (vehicleId ?? ''));
+                    },
+                    value: _models.length != 0 ? _models[0].vehicleId : null,
+                    items: _models.map((e) => vehicleModelDDMB(e)).toList()),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
@@ -46,63 +127,11 @@ class EditVehicleDetailBlock extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 8.0),
             child: TextInput(
               hint: '102453',
-              label: 'Dairy KM travel',
+              label: 'Daily KM travel',
               icon: Icon(Icons.timeline),
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-// Brand dropdown menu
-class DropDownMenu extends StatefulWidget {
-  final List<String> dpmItems;
-
-  const DropDownMenu({Key? key, required this.dpmItems}) : super(key: key);
-
-  @override
-  State<DropDownMenu> createState() => _DropDownMenuState(dpmItems);
-}
-
-/// This is the private State class that goes with MyStatefulWidget.
-class _DropDownMenuState extends State<DropDownMenu> {
-  String dropdownValue = 'Brand1';
-  List<String> dpmItems = [];
-
-  _DropDownMenuState(itemlist) {
-    this.dpmItems = itemlist ?? ['None'];
-    this.dropdownValue = itemlist[0] ?? ['None'];
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(border: Border.all()),
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: DropdownButton<String>(
-        value: dropdownValue,
-        icon: const Icon(Icons.arrow_downward),
-        iconSize: 24,
-        elevation: 16,
-        isExpanded: true,
-        // style: const TextStyle(color: Colors.deepPurple),
-        underline: Container(
-          height: 2,
-          // color: Colors.deepPurpleAccent,
-        ),
-        onChanged: (String? newValue) {
-          setState(() {
-            dropdownValue = newValue!;
-          });
-        },
-        items: dpmItems.map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          );
-        }).toList(),
       ),
     );
   }

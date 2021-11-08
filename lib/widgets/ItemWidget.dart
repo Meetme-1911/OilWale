@@ -47,7 +47,7 @@ class ItemWidget extends StatelessWidget {
                     Container(
                       width: 175.0,
                       child: Text(
-                        item.specification ?? 'NULL',
+                        item.specification,
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontSize: 12.0,

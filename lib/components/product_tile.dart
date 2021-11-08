@@ -11,7 +11,7 @@ class ProductTile extends StatelessWidget {
     return MaterialButton(
       padding: EdgeInsets.zero,
       onPressed: () {
-        Navigator.pushNamed(context, "/cust_product", arguments: product.id);
+        Navigator.pushNamed(context, "/cust_product", arguments: product);
       },
       child: Container(
           margin: EdgeInsets.symmetric(vertical: 4.0),
@@ -25,8 +25,7 @@ class ProductTile extends StatelessWidget {
             children: [
               Container(
                   // flex: 1,
-                  child: Image.network(
-                      product.image ?? 'https://picsum.photos/200'),
+                  child: Image.network('https://picsum.photos/200'),
                   height: 80),
               Container(
                   // flex: 3,
@@ -52,7 +51,7 @@ class ProductTile extends StatelessWidget {
                                   fontSize: 18.0)),
                         ],
                       ),
-                      Text(product.specification ?? '',
+                      Text(product.specification,
                           style:
                               TextStyle(color: Colors.black, fontSize: 18.0)),
                     ],

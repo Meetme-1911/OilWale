@@ -16,7 +16,7 @@ class _ProductListViewState extends State<ProductListView> {
   @override
   void initState() {
     super.initState();
-    ProductAPIManager.getProducts().then((resp) {
+    ProductAPIManager.getAllProducts().then((resp) {
       setState(() {
         _pList = resp;
       });
@@ -33,12 +33,12 @@ class _ProductListViewState extends State<ProductListView> {
           onChanged: (String input) {
             print("User entered: " + input);
             setState(() async {
-              _pList = await ProductAPIManager.getProducts();
+              _pList = await ProductAPIManager.getAllProducts();
               String inpLowercase = input.toLowerCase();
               _pList = _pList.where((p) {
                 if (p.name.toLowerCase().contains(inpLowercase)) {
                   return true;
-                } else if (p.specification!
+                } else if (p.specification
                     .toLowerCase()
                     .contains(inpLowercase)) {
                   return true;
@@ -67,7 +67,6 @@ class _ProductListViewState extends State<ProductListView> {
               hintStyle: TextStyle(color: Colors.deepOrange)),
         ),
         Expanded(
-          // height: (MediaQuery.of(context).size.height - 179),
           child: ListView.builder(
             itemCount: _pList.length,
             itemBuilder: (context, index) {

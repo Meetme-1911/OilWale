@@ -9,7 +9,7 @@ class VehicleDetails extends StatefulWidget {
 }
 
 class _VehicleDetailsState extends State<VehicleDetails> {
-  var args;
+  CustomerVehicle? args;
   VehicleDetailBlock? _vehicleDetailBlock;
   EditVehicleDetailBlock? _editVehicleDetailBlock;
   bool isEditing = false;
@@ -36,11 +36,11 @@ class _VehicleDetailsState extends State<VehicleDetails> {
 
   @override
   Widget build(BuildContext context) {
-    args = ModalRoute.of(context)!.settings.arguments as String;
+    args = ModalRoute.of(context)!.settings.arguments as CustomerVehicle;
     _vehicleDetailBlock = VehicleDetailBlock(
         customerVehicle: CustomerVehicle(
             brand: "Hero",
-            id: args,
+            id: args!.id,
             model: "YuYu",
             numberPlate: "11 22 33",
             currentKM: 428,
