@@ -1,4 +1,4 @@
-import 'package:Oilwale/models/product.dart';
+import 'package:oilwale/models/product.dart';
 
 class CatalogModel {
   static final List<Product> products = [

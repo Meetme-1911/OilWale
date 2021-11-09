@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:Oilwale/screens/garage/offers.dart';
-import 'package:Oilwale/screens/garage/products.dart';
-import 'package:Oilwale/screens/garage/home_page.dart';
-import 'package:Oilwale/screens/garage/profile.dart';
+import 'package:oilwale/screens/garage/offers.dart';
+import 'package:oilwale/screens/garage/products.dart';
+import 'package:oilwale/screens/garage/home_page.dart';
+import 'package:oilwale/screens/garage/profile.dart';
+
+import 'cart.dart';
 
 class GarageScaffold extends StatefulWidget {
-  const GarageScaffold({Key? key}) : super(key: key);
+  const GarageScaffold({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _GarageScaffoldState createState() => _GarageScaffoldState();
@@ -20,18 +24,8 @@ class _GarageScaffoldState extends State<GarageScaffold> {
     Profile()
   ];
   final bool showcart = false;
-  final floatingbtn = [
-    null,
-    null,
-    FloatingActionButton(
-      elevation: 2.0,
-      onPressed: () {},
-      child: Icon(Icons.shopping_cart),
-      backgroundColor: Colors.white,
-      foregroundColor: Colors.deepOrange,
-    ),
-    null
-  ];
+
+
   void onTapped(int index) {
     setState(() {
       _currentindex = index;
@@ -40,9 +34,24 @@ class _GarageScaffoldState extends State<GarageScaffold> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    final floatingbtn = [
+      null,
+      null,
+      FloatingActionButton(
+        elevation: 2.0,
+        onPressed: () {
+          Navigator.pushNamed(context, '/cart');
+        },
+        child: Icon(Icons.shopping_cart),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.deepOrange,
+      ),
+      null
+    ];
+    return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: new AppBar(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
         actions: [
           PopupMenuButton(
               offset: const Offset(0.0, 50.0),
@@ -52,6 +61,19 @@ class _GarageScaffoldState extends State<GarageScaffold> {
               ),
               color: Colors.grey[300],
               itemBuilder: (context) => [
+                    PopupMenuItem(
+                        child: Row(
+                      children: [
+                        Icon(
+                          Icons.history_rounded,
+                          color: Colors.deepOrange,
+                        ),
+                        const SizedBox(
+                          width: 7,
+                        ),
+                        Text("Purchase History"),
+                      ],
+                    )),
                     PopupMenuItem(
                         child: Row(
                       children: [

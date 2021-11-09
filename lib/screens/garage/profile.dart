@@ -24,7 +24,7 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 30.0, bottom: 30.0),
+                padding: const EdgeInsets.only(top: 30.0, bottom: 10.0),
                 child: Row(children: [
                   Expanded(
                       flex: 2,
@@ -52,36 +52,25 @@ class _ProfileState extends State<Profile> {
                     children: [
                       Text(
                         "User ID:",
-                        style: TextStyle(color: Colors.grey[600]),
+                          style:
+                          TextStyle(color: Colors.grey[700], fontSize: 13.0),
                       ),
                       SizedBox(height: 10.0),
-                      Text("Password :",
-                          style: TextStyle(
-                            color: Colors.grey[600],
-                          )),
+                      Text(
+                        "1234567",
+                        style: TextStyle(
+                            fontSize: 18.0, fontWeight: FontWeight.w500),
+                      )
+                      // Text("Password :",
+                      //     style: TextStyle(
+                      //       color: Colors.grey[600],
+                      //     )),
                     ],
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        "123456",
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      Text(
-                        "*******",
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                    ],
-                  )
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 30.0, bottom: 30.0),
+                padding: const EdgeInsets.only(top: 10.0, bottom: 30.0),
                 child: Row(children: [
                   Expanded(
                       flex: 3,

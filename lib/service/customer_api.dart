@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:Oilwale/models/customer.dart';
+import 'package:oilwale/models/customer.dart';
 import 'package:http/http.dart' as http;
 
 const String base_url = "https://oilwale.herokuapp.com/api";

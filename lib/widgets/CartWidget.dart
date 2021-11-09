@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:oilwale/components/oilwale_theme.dart';
 import '../models/product.dart';
 
-class ItemWidget extends StatefulWidget {
+class CartWidget extends StatefulWidget {
   final Product item;
-  const ItemWidget({Key? key, required this.item}) : super(key: key);
+  const CartWidget({Key? key, required this.item}) : super(key: key);
 
   @override
-  State<ItemWidget> createState() => _ItemWidgetState();
+  State<CartWidget> createState() => _CartWidgetState();
 }
 
-class _ItemWidgetState extends State<ItemWidget> {
+
+class _CartWidgetState extends State<CartWidget> {
   // var _message = "Add to cart";
   var count = " Add to Cart ";
   @override
@@ -77,28 +77,28 @@ class _ItemWidgetState extends State<ItemWidget> {
                           width: 100.0,
                           height: 35.0,
                           child: TextButton(
-                            onPressed: () {
-                              setState(() {
-                                if(count == "Added to Cart")
-                                  count = "Add to Cart";
-                                else
-                                  count = "Added to Cart";
-                              });
-                            },
+                              onPressed: () {
+                                setState(() {
+                                  if(count == "Added to Cart")
+                                    count = "Add to Cart";
+                                  else
+                                    count = "Added to Cart";
+                                });
+                              },
                               style: TextButton.styleFrom(backgroundColor: Colors.deepOrange[200]!.withOpacity(0.7)),
-                             // decoration: BoxDecoration(
-                             //   color: Colors.deepOrange[200]!.withOpacity(0.7),
-                             //   // border: Border.all(
-                             //   //   color: Colors.deepOrange
-                             //   // ),
-                             //   borderRadius: BorderRadius.all(Radius.circular(9.0))
-                             // ),
+                              // decoration: BoxDecoration(
+                              //   color: Colors.deepOrange[200]!.withOpacity(0.7),
+                              //   // border: Border.all(
+                              //   //   color: Colors.deepOrange
+                              //   // ),
+                              //   borderRadius: BorderRadius.all(Radius.circular(9.0))
+                              // ),
                               child:
                               Text(
-                              count,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.deepOrange, fontSize: 12.0),
+                                count,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.deepOrange, fontSize: 12.0),
                               )),
                         ),
                       ],

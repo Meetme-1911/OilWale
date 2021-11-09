@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:Oilwale/service/customer_api.dart';
+import 'package:oilwale/service/customer_api.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   @override

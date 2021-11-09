@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Oilwale/components/productlist.dart';
+import 'package:oilwale/components/productlist.dart';
 
 class ProductScreen extends StatelessWidget {
   @override

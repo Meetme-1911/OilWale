@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Oilwale/components/oilwale_theme.dart';
+import 'package:oilwale/components/oilwale_theme.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
