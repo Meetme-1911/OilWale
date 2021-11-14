@@ -3,6 +3,7 @@ import '../models/product.dart';
 
 class CartWidget extends StatefulWidget {
   final Product item;
+
   const CartWidget({Key? key, required this.item}) : super(key: key);
 
   @override
@@ -12,7 +13,8 @@ class CartWidget extends StatefulWidget {
 
 class _CartWidgetState extends State<CartWidget> {
   // var _message = "Add to cart";
-  var count = " Add to Cart ";
+  var count = 0;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -76,30 +78,39 @@ class _CartWidgetState extends State<CartWidget> {
                         SizedBox(
                           width: 100.0,
                           height: 35.0,
-                          child: TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  if(count == "Added to Cart")
-                                    count = "Add to Cart";
-                                  else
-                                    count = "Added to Cart";
-                                });
-                              },
-                              style: TextButton.styleFrom(backgroundColor: Colors.deepOrange[200]!.withOpacity(0.7)),
-                              // decoration: BoxDecoration(
-                              //   color: Colors.deepOrange[200]!.withOpacity(0.7),
-                              //   // border: Border.all(
-                              //   //   color: Colors.deepOrange
-                              //   // ),
-                              //   borderRadius: BorderRadius.all(Radius.circular(9.0))
-                              // ),
-                              child:
-                              Text(
-                                count,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.deepOrange, fontSize: 12.0),
-                              )),
+                          child: Container(
+                            child: Row(
+                              children: [
+                                Expanded(
+                                    child: TextButton(
+
+                                        onPressed: () {
+
+                                          setState(() {
+                                            count --;
+                                          });
+                                        }, child: Icon(Icons.remove,color: Colors.deepOrange,),
+
+                                    )
+                                ),
+                                Expanded(
+                                  child: Center(
+                                    child: Text(
+                                        "$count"
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: TextButton(onPressed: () {
+                                    setState(() {
+                                      count++;
+                                    });
+                                  },
+                                      child: Icon(Icons.add,color: Colors.deepOrange,)),
+                                )
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     )
@@ -107,7 +118,9 @@ class _CartWidgetState extends State<CartWidget> {
                 ),
               )
             ],
-          ),
-        ));
+          )
+          ,
+        )
+    );
   }
 }

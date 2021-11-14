@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:oilwale/components/oilwale_theme.dart';
 import '../models/product.dart';
+import '../screens/garage/globals.dart';
 
 class ItemWidget extends StatefulWidget {
   final Product item;
+
   const ItemWidget({Key? key, required this.item}) : super(key: key);
 
   @override
@@ -12,7 +14,11 @@ class ItemWidget extends StatefulWidget {
 
 class _ItemWidgetState extends State<ItemWidget> {
   // var _message = "Add to cart";
+
   var count = " Add to Cart ";
+  Color added = Colors.deepOrange[200]!.withOpacity(.1);
+  Color cartaddedtext = Colors.deepOrange;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -77,28 +83,29 @@ class _ItemWidgetState extends State<ItemWidget> {
                           width: 100.0,
                           height: 35.0,
                           child: TextButton(
-                            onPressed: () {
-                              setState(() {
-                                if(count == "Added to Cart")
-                                  count = "Add to Cart";
-                                else
-                                  count = "Added to Cart";
-                              });
-                            },
-                              style: TextButton.styleFrom(backgroundColor: Colors.deepOrange[200]!.withOpacity(0.7)),
-                             // decoration: BoxDecoration(
-                             //   color: Colors.deepOrange[200]!.withOpacity(0.7),
-                             //   // border: Border.all(
-                             //   //   color: Colors.deepOrange
-                             //   // ),
-                             //   borderRadius: BorderRadius.all(Radius.circular(9.0))
-                             // ),
-                              child:
-                              Text(
-                              count,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.deepOrange, fontSize: 12.0),
+                              onPressed: () {
+                                setState(() {
+                                  if (count == "Added to Cart") {
+                                    added =
+                                        Colors.deepOrange[200]!.withOpacity(.3);
+                                    count = "Add to Cart";
+                                    cartaddedtext = Colors.deepOrange;
+                                    cartnum--;
+                                  } else {
+                                    count = "Added to Cart";
+                                    added = Colors.green;
+                                    cartaddedtext = Colors.white;
+                                    cartnum++;
+                                  }
+                                });
+                              },
+                              style: TextButton.styleFrom(
+                                  backgroundColor: added.withOpacity(0.7)),
+                              child: Text(
+                                count,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: cartaddedtext, fontSize: 12.0),
                               )),
                         ),
                       ],

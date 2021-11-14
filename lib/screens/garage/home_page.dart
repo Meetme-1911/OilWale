@@ -1,17 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oilwale/screens/garage/garage_scaffold.dart';
 import 'package:oilwale/widgets/OffersWidget.dart';
 import 'package:oilwale/models/OffersCatalog.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+
+  const HomePage({Key? key,required this.gotoOffer}) : super(key: key);
+
+  final Function gotoOffer;
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState(this.gotoOffer);
+
 }
 
 class _HomePageState extends State<HomePage> {
   get offers => null;
+  late Function gotoOffer;
+  _HomePageState(Function jabadaba) {
+    this.gotoOffer = jabadaba;
+  }
+  bool showoffers = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, 'garage_offers');
+                    gotoOffer();
                   },
                   child: Text(
                     "See more offers",

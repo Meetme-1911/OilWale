@@ -3,13 +3,12 @@ import 'package:oilwale/screens/garage/offers.dart';
 import 'package:oilwale/screens/garage/products.dart';
 import 'package:oilwale/screens/garage/home_page.dart';
 import 'package:oilwale/screens/garage/profile.dart';
-
+import '../garage/globals.dart';
 import 'cart.dart';
 
 class GarageScaffold extends StatefulWidget {
-  const GarageScaffold({
-    Key? key,
-  }) : super(key: key);
+
+  const GarageScaffold({Key? key}) : super(key: key);
 
   @override
   _GarageScaffoldState createState() => _GarageScaffoldState();
@@ -17,14 +16,31 @@ class GarageScaffold extends StatefulWidget {
 
 class _GarageScaffoldState extends State<GarageScaffold> {
   int _currentindex = 0;
-  final List<Widget> _children = [
-    HomePage(),
-    OffersPage(),
-    ProductsPage(),
-    Profile()
-  ];
-  final bool showcart = false;
 
+  void gotoOffers() {
+    setState(() {
+      _currentindex = 1;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    this._children = [
+      HomePage(
+        gotoOffer: () {
+          gotoOffers();
+        },
+      ),
+      OffersPage(),
+      ProductsPage(),
+      Profile()
+    ];
+  }
+
+  List<Widget> _children = [];
+  final bool showcart = false;
 
   void onTapped(int index) {
     setState(() {
@@ -42,7 +58,19 @@ class _GarageScaffoldState extends State<GarageScaffold> {
         onPressed: () {
           Navigator.pushNamed(context, '/cart');
         },
-        child: Icon(Icons.shopping_cart),
+        child: Stack(
+          children: [
+            Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                padding: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                        color: Colors.deepOrange,
+                        borderRadius: BorderRadius.circular(6)),
+                    child: Text("$cartnum", style: TextStyle(color: Colors.white),textAlign: TextAlign.center,))),
+            Center(child: Icon(Icons.shopping_cart)),
+          ],
+        ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.deepOrange,
       ),
@@ -113,7 +141,7 @@ class _GarageScaffoldState extends State<GarageScaffold> {
       body: _children[_currentindex],
       floatingActionButton: floatingbtn[_currentindex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
+        // backgroundColor: Colors.,
         selectedItemColor: Colors.deepOrange,
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,

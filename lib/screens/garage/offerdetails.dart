@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:oilwale/models/Offers.dart';
 // import '/PAGES/offers.dart';
 
 class OfferDetails extends StatelessWidget {
@@ -8,6 +9,9 @@ class OfferDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final Offers offers = ModalRoute.of(context)!.settings.arguments as Offers;
+
     return Scaffold(
       body: Material(
         color: Colors.grey[200],
@@ -22,14 +26,14 @@ class OfferDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Get upto 50% off on these deals .",
+                    offers.offerName,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
                   ),
                   SizedBox(
                     height: 10.0,
                   ),
                   Text(
-                      "claim a discount of 50% and more on buying newly introduced oils ."),
+                      offers.description,),
                   SizedBox(
                     height: 10.0,
                   ),

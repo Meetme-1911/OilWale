@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:oilwale/screens/garage/offerdetails.dart';
 import 'package:oilwale/screens/garage/products.dart';
 import 'package:oilwale/screens/garage/profile.dart';
+import 'package:oilwale/models/Offers.dart';
 
 import 'home_page.dart';
 
@@ -14,6 +15,7 @@ class OffersPage extends StatefulWidget {
 
 class OffersPageState extends State<OffersPage> {
   bool showoffer = false;
+  late Offers offers;
 
   //
   // void toggleOfferDetails()
@@ -192,7 +194,7 @@ class OffersPageState extends State<OffersPage> {
                   InkWell(
                     onTap: () {
                       setState(() {
-                        Navigator.pushNamed(context, '/offer_details');
+                        Navigator.pushNamed(context, '/offer_details',arguments: offers);
                       });
                     },
                     child: Card(

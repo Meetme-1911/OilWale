@@ -9,7 +9,7 @@ class OffersWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/offer_details');
+        Navigator.pushNamed(context, '/offer_details',arguments: offers);
       },
       child: Card(
         elevation: 4.0,
