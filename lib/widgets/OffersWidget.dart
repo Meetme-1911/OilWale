@@ -13,7 +13,7 @@ class OffersWidget extends StatelessWidget {
       },
       child: Card(
         elevation: 4.0,
-        margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
+        margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 4.0),
         child: Row(
           children: [
             Expanded(

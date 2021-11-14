@@ -83,10 +83,9 @@ class _CartWidgetState extends State<CartWidget> {
                               children: [
                                 Expanded(
                                     child: TextButton(
-
                                         onPressed: () {
-
                                           setState(() {
+                                            if(count >0)
                                             count --;
                                           });
                                         }, child: Icon(Icons.remove,color: Colors.deepOrange,),

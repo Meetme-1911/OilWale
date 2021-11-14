@@ -76,11 +76,65 @@ class _GarageScaffoldState extends State<GarageScaffold> {
       ),
       null
     ];
+    final popupmenubutton = [
+      null,
+      null,
+      null,
+      PopupMenuButton(
+          offset: const Offset(0.0, 50.0),
+          icon: Icon(
+            Icons.more_vert,
+            color: Colors.deepOrange,
+          ),
+          color: Colors.grey[300],
+          itemBuilder: (context) => [
+            PopupMenuItem(
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.history_rounded,
+                      color: Colors.deepOrange,
+                    ),
+                    const SizedBox(
+                      width: 7,
+                    ),
+                    Text("Purchase History"),
+                  ],
+                )),
+            PopupMenuItem(
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.settings,
+                      color: Colors.deepOrange,
+                    ),
+                    const SizedBox(
+                      width: 7,
+                    ),
+                    Text("Settings"),
+                  ],
+                )),
+            PopupMenuItem(
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.logout,
+                      color: Colors.deepOrange,
+                    ),
+                    const SizedBox(
+                      width: 7,
+                    ),
+                    Text("Logout")
+                  ],
+                ))
+          ])
+    ];
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        actions: [
+        actions:
+        [
           PopupMenuButton(
               offset: const Offset(0.0, 50.0),
               icon: Icon(
