@@ -39,7 +39,12 @@ class OffersWidget extends StatelessWidget {
                     Text(offers.description,
                       style: TextStyle(
                           fontSize: 10.0
-                      ),)
+                      ),),
+                    SizedBox(height: 5.0,),
+                    Text("Last Date  :"+offers.endsAt,
+                    style: TextStyle(
+                      fontSize: 10.0,color: Colors.grey
+                    ),)
                   ]
               ),
             ),

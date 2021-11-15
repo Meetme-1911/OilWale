@@ -41,57 +41,93 @@ class _HomePageState extends State<HomePage> {
                     boxShadow: [
                       BoxShadow(blurRadius: 2.0, color: Colors.grey),
                     ]),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                child: Column(
                   children: [
+                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.fromLTRB(25.0, 25.0, 5.0, 5.0),
+                            child: Text(
+                              "Customers",
+                              style: TextStyle(
+                                  color: Colors.deepOrange,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.0),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.fromLTRB(30.0, 40.0, 5.0, 25.0),
+                            child: Text(
+                              "786",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0),
+                            ),
+                          )
+                        ],
+                      ),
+
+                      Container(
+                        margin: EdgeInsets.fromLTRB(30.0, 0.0, 10.0, 0.0),
+                        width: 1,
+                        height: 50.0,
+                        color: Colors.deepOrange,
+                      ),
+                      Stack(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.fromLTRB(25.0, 25.0, 5.0, 5.0),
+                            child: Text(
+                              "Credit Points",
+                              style: TextStyle(
+                                  color: Colors.deepOrange,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.0),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.fromLTRB(38.0, 40.0, 5.0, 25.0),
+                            child: Center(
+                              child: Text(
+                                "500",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(18.0,0.0,18.0,8.0),
+                      child: Divider(height: 1,color: Colors.deepOrange, thickness: 1.0,),
+                    ),
                     Stack(
                       children: [
                         Container(
-                          padding: EdgeInsets.fromLTRB(25.0, 25.0, 5.0, 5.0),
-                          child: Text(
-                            "Referral Code",
-                            style: TextStyle(
-                                color: Colors.deepOrange,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14.0),
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.fromLTRB(5.0, 40.0, 5.0, 25.0),
-                          child: Text(
-                            "546127123456",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0),
-                          ),
-                        )
-                      ],
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(30.0, 0.0, 10.0, 0.0),
-                      width: 1,
-                      height: 50.0,
-                      color: Colors.deepOrange,
-                    ),
-                    Stack(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.fromLTRB(25.0, 25.0, 5.0, 5.0),
-                          child: Text(
-                            "Credit Points",
-                            style: TextStyle(
-                                color: Colors.deepOrange,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14.0),
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.fromLTRB(38.0, 40.0, 5.0, 25.0),
                           child: Center(
                             child: Text(
-                              "500",
+                              "Referral Code",
+                              style: TextStyle(
+                                  color: Colors.deepOrange,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.0),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 20.0),
+                          child: Center(
+                            child: Text(
+                              "RFDC56",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
@@ -101,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                         )
                       ],
                     ),
-                  ],
+              ]
                 ))
           ],
         ),
